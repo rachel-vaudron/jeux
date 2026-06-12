@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Points</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { color: #333; margin-bottom: 20px; }
+        .players-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .player-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .player-name { font-size: 1.2rem; font-weight: bold; color: #444; }
+        .score-display { font-size: 1.8rem; font-weight: bold; color: #4A90E2; min-width: 60px; text-align: center; }
+        .buttons { display: flex; gap: 10px; }
+        button {
+            border: none;
+            padding: 10px 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        button:active { transform: scale(0.95); }
+        .btn-minus { background-color: #ff4d4d; color: white; }
+        .btn-plus { background-color: #2ec4b6; color: white; }
+        .btn-reset {
+            margin-top: 25px;
+            background-color: #6c757d;
+            color: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏆 Scores</h1>
+    
+    <div class="players-container" id="players">
+        <!-- Les joueurs vont être générés ici par le JavaScript -->
+    </div>
+
+    <button class="btn-reset" onclick="resetScores()">Réinitialiser la partie</button>
+
+    <script>
+        // Liste de vos joueurs (vous pouvez changer les noms ici !)
+        const playersData = [
+            { id: 1, name: "Joueur 1" },
+            { id: 2, name: "Joueur 2" },
+            { id: 3, name: "Joueur 3" }
+        ];
+
+        // Charger les scores sauvegardés ou démarrer à 0
+        let scores = JSON.parse(localStorage.getItem('gameScores')) || {};
+        playersData.forEach(p => { if (scores[p.id] === undefined) scores[p.id] = 0; });
+
+        function renderPlayers() {
+            const container = document.getElementById('players');
+            container.innerHTML = '';
+            playersData.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'player-card';
+                card.innerHTML = `
+                    <div class="player-name">${player.name}</div>
+                    <div class="score-display" id="score-${player.id}">${scores[player.id]}</div>
+                    <div class="buttons">
+                        <button class="btn-minus" onclick="updateScore(${player.id}, -1)">-</button>
+                        <button class="btn-plus" onclick="updateScore(${player.id}, 1)">+</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateScore(id, value) {
+            scores[id] += value;
+            document.getElementById(`score-${id}`).innerText = scores[id];
+            localStorage.setItem('gameScores', JSON.stringify(scores));
+        }
+
+        function resetScores() {
+            if(confirm("Recommencer une nouvelle partie ?")) {
+                Object.keys(scores).forEach(id => scores[id] = 0);
+                localStorage.setItem('gameScores', JSON.stringify(scores));
+                renderPlayers();
+            }
+        }
+
+        // Enregistrement du Service Worker pour le mode hors-ligne (PWA)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+
+        renderPlayers();
+    </script>
+</body>
+</html>
