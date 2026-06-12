@@ -1,0 +1,16 @@
+{
+  "name": "Mon Compteur de Points",
+  "short_name": "Points",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme-color": "#4A90E2",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3112/3112946.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
