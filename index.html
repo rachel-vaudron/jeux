@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -23,16 +23,16 @@
 
         body.dark-theme {
             color-scheme: dark;
-            --primary: #6ea8ff;
-            --primary-dark: #4b87e8;
-            --accent: #39d2b2;
-            --danger: #ff7a7a;
-            --surface: #111827;
-            --surface-soft: #1f2937;
-            --border: #374151;
-            --text: #f9fafb;
-            --muted: #cbd5e1;
-            --shadow: 0 16px 40px rgba(2, 6, 23, 0.45);
+            --primary: #e0a427;
+            --primary-dark: #edc060;
+            --accent: #f06285;
+            --danger: #27c5c5;
+            --surface: #000000;
+            --surface-soft: #070601;
+            --border: #2a2214;
+            --text: #eee7d8;
+            --muted: #b4aa9c;
+            --shadow: 0 16px 40px rgba(238, 231, 216, 0.12);
         }
 
         * { box-sizing: border-box; }
@@ -40,14 +40,37 @@
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(31, 91, 216, 0.16), transparent 30%),
-                linear-gradient(135deg, #f9fbff 0%, #eef5ff 100%);
+                radial-gradient(1200px 420px at 15% -10%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 60%),
+                linear-gradient(180deg, #dff6ff 0%, #7dd4e8 34%, #2fa6c4 48%, #2a86ab 60%, #e6c58f 76%, #f4d9a8 100%);
             margin: 0;
             padding: 24px 16px 40px;
             color: var(--text);
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            isolation: isolate;
         }
-
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23d8f3ff'/%3E%3Cstop offset='1' stop-color='%2378cfe7'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2338b3d1'/%3E%3Cstop offset='1' stop-color='%231f7da4'/%3E%3C/linearGradient%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23edd19d'/%3E%3Cstop offset='1' stop-color='%23d4ae74'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='360' fill='url(%23g1)'/%3E%3Crect y='360' width='1600' height='290' fill='url(%23g2)'/%3E%3Crect y='650' width='1600' height='250' fill='url(%23g3)'/%3E%3Cellipse cx='1270' cy='120' rx='90' ry='45' fill='%23ffffff' fill-opacity='0.65'/%3E%3Cellipse cx='1325' cy='120' rx='110' ry='50' fill='%23ffffff' fill-opacity='0.55'/%3E%3Cpath d='M0 430 C 200 405 370 458 560 438 C 820 410 980 470 1220 435 C 1380 412 1495 458 1600 438 L1600 530 L0 530 Z' fill='%23ffffff' fill-opacity='0.2'/%3E%3Cpath d='M0 470 C 220 450 350 500 560 482 C 760 462 980 520 1200 488 C 1360 465 1490 505 1600 492 L1600 560 L0 560 Z' fill='%23ffffff' fill-opacity='0.14'/%3E%3Cg transform='translate(980 580) rotate(-9)'%3E%3Crect x='0' y='0' width='150' height='150' rx='18' fill='%23fefefe' stroke='%23d8d8d8' stroke-width='6'/%3E%3Ccircle cx='45' cy='45' r='11' fill='%23111111'/%3E%3Ccircle cx='105' cy='105' r='11' fill='%23111111'/%3E%3C/g%3E%3Cg transform='translate(1138 610) rotate(8)'%3E%3Crect x='0' y='0' width='130' height='130' rx='16' fill='%23f8f8f8' stroke='%23d2d2d2' stroke-width='6'/%3E%3Ccircle cx='40' cy='40' r='10' fill='%23111111'/%3E%3Ccircle cx='90' cy='40' r='10' fill='%23111111'/%3E%3Ccircle cx='40' cy='90' r='10' fill='%23111111'/%3E%3Ccircle cx='90' cy='90' r='10' fill='%23111111'/%3E%3C/g%3E%3Cg transform='translate(820 640) rotate(5)'%3E%3Crect x='0' y='0' width='110' height='110' rx='14' fill='%23ffffff' stroke='%23d6d6d6' stroke-width='5'/%3E%3Ccircle cx='55' cy='55' r='10' fill='%23111111'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(900px 280px at 80% 8%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 65%),
+                linear-gradient(180deg, rgba(10, 34, 52, 0.06), rgba(10, 34, 52, 0.14));
+            pointer-events: none;
+        }
         #app {
             max-width: 520px;
             margin: 0 auto;
@@ -56,12 +79,17 @@
             gap: 18px;
         }
 
+        #app.horloge-layout {
+            max-width: 1800px;
+        }
+
         h1 {
             margin: 0 0 6px;
             font-size: 2.05rem;
             font-weight: 800;
             text-align: center;
             letter-spacing: -0.02em;
+            color: #000;
         }
 
         .subtitle {
@@ -115,16 +143,56 @@
             gap: 12px;
         }
 
+        .players-container.horizontal-players {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 2px;
+            overflow-x: auto;
+            align-items: stretch;
+            padding-bottom: 4px;
+        }
+
+        .players-container.horizontal-players .player-card,
+        .players-container.horizontal-players .zinch-player-card {
+            flex: 0 0 auto;
+            width: fit-content;
+            min-width: 96px;
+            max-width: none;
+        }
+
+        .players-container.horizontal-players .player-name-input {
+            field-sizing: content;
+            width: auto;
+            min-width: 10ch;
+            max-width: 22ch;
+        }
+
+        .players-container.horizontal-players::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .players-container.horizontal-players::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.45);
+            border-radius: 999px;
+        }
+
         .player-card {
             background: linear-gradient(145deg, var(--surface), var(--surface-soft));
             border: 1px solid var(--border);
-            padding: 14px;
-            border-radius: 16px;
+            padding: 4px;
+            border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 2px;
             box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+        }
+
+        .player-card.current-player {
+            border-color: var(--primary);
+            background: linear-gradient(145deg, rgba(91, 124, 255, 0.08), rgba(91, 124, 255, 0.04));
+            box-shadow: 0 0 0 2px var(--primary), 0 10px 24px rgba(91, 124, 255, 0.16);
         }
 
         .player-name {
@@ -136,12 +204,37 @@
 
         .player-name-input {
             width: 100%;
-            padding: 8px 10px;
+            padding: 4px 6px;
             border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 1.02rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
             background: var(--surface-soft);
             color: var(--text);
+        }
+
+        .darts501-player-card {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .darts501-player-card .player-name {
+            width: auto;
+            flex: 1;
+        }
+
+        .darts501-player-card .score-display {
+            width: auto;
+            min-width: 48px;
+            text-align: right;
+            font-size: 1.35rem;
+        }
+
+        .darts501-players-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
         .score-display { font-size: 1.85rem; font-weight: 800; color: var(--primary); min-width: 68px; text-align: center; }
         .buttons { display: flex; gap: 8px; }
@@ -212,14 +305,29 @@
         }
 
         button:active { transform: scale(0.96); }
-        .btn-minus, .btn-plus {
-            padding: 8px 12px;
-            font-size: 1rem;
-            min-width: 44px;
+        .zinch-action-btn {
+            padding: 0;
+            font-size: 1.2rem;
+            min-width: 48px;
+            min-height: 42px;
+            width: 64px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 8px 16px rgba(17, 24, 39, 0.1);
         }
+        .btn-arrow-up {
+            background: linear-gradient(135deg, #34d4b1, var(--accent)); color: white;
+        }
+        .btn-arrow-down {
+            background: linear-gradient(135deg, #ff9800, #ff7f00); color: white;
+        }
+        .btn-minus, .btn-plus {
+            background: linear-gradient(135deg, #34d4b1, var(--accent)); color: white;
+        }
         .btn-minus { background: linear-gradient(135deg, #ff6b6b, var(--danger)); color: white; }
-        .btn-plus { background: linear-gradient(135deg, #34d4b1, var(--accent)); color: white; }
+        .btn-arrow-up { background: linear-gradient(135deg, #ff9800, #ff7f00); color: white; }
         .btn-secondary {
             background: linear-gradient(135deg, var(--surface-soft), var(--surface));
             color: var(--text);
@@ -253,7 +361,8 @@
         .field-row {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .field-row .field {
@@ -262,17 +371,31 @@
         }
 
         .field-row input[type="number"] {
-            width: 90px;
-            min-width: 90px;
-            padding: 10px 10px;
+            width: 78px;
+            min-width: 78px;
+            padding: 8px 10px;
+        }
+
+        #player-count-form .field-row {
+            margin-bottom: 12px;
+        }
+
+        #player-count-form .setup-name-input {
+            padding: 9px 11px;
+            font-size: 0.95rem;
+            min-height: 38px;
+        }
+
+        #player-count-form label {
+            font-size: 0.95rem;
         }
 
         label { font-weight: 600; }
         input[type="number"] {
-            padding: 12px;
+            padding: 10px;
             border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
         }
 
         .actions {
@@ -284,17 +407,23 @@
         .zinch-player-card {
             background: linear-gradient(145deg, var(--surface), var(--surface-soft));
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 3px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 1px;
             box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
         }
 
         .zinch-player-card.active {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(91, 124, 255, 0.16);
+        }
+
+        .zinch-player-card.current-player {
+            border-color: var(--primary);
+            background: linear-gradient(145deg, rgba(91, 124, 255, 0.08), rgba(91, 124, 255, 0.04));
+            box-shadow: 0 0 0 2px var(--primary), 0 10px 24px rgba(91, 124, 255, 0.16);
         }
 
         .zinch-player-card.red {
@@ -329,6 +458,18 @@
             gap: 6px;
         }
 
+        .zinch-line.high-score {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .zinch-line.high-score {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
+        }
+
         .zinch-line {
             background: linear-gradient(135deg, #eef3ff, #f8faff);
             border-radius: 999px;
@@ -336,12 +477,14 @@
             font-size: 0.9rem;
             color: var(--text);
             border: 1px solid #e4ebfa;
+            font-weight: 700;
         }
 
         .zinch-line.zinch {
-            background: linear-gradient(135deg, #ffeaea, #fff3f3);
-            color: var(--danger);
-            border-color: #ffd6d6;
+            background: rgba(216, 58, 58, 0.7);
+            color: white;
+            border-color: rgba(216, 58, 58, 0.7);
+            font-weight: 800;
         }
 
         .zinch-controls {
@@ -352,12 +495,9 @@
             justify-content: space-between;
         }
 
-        .zinch-undo-btn {
+        .z-inch-undo-btn {
             background: linear-gradient(135deg, #ff5b5b 0%, #d63b3b 100%);
             color: white;
-            min-width: 90px;
-            width: auto;
-            font-size: 0.95rem;
             box-shadow: 0 4px 12px rgba(214, 59, 59, 0.25);
         }
 
@@ -375,6 +515,510 @@
             background: #f7f8fa;
         }
 
+        .darts-picker-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .darts-picker-modal.active {
+            display: flex;
+        }
+
+        .darts-picker-content {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 24px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .darts-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .darts-dart-btn {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface-soft);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .darts-dart-btn:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .darts-dart-btn:active {
+            transform: scale(0.95);
+        }
+
+        .darts-dart-btn.single {
+            background: linear-gradient(135deg, #f0f4ff, #f8faff);
+        }
+
+        .darts-dart-btn.double {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
+            color: white;
+        }
+
+        .darts-dart-btn.triple {
+            background: linear-gradient(135deg, #ff9800, #ff7f00);
+            color: white;
+        }
+
+        .horloge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .horloge-number-btn {
+            padding: 16px 12px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--surface-soft), var(--surface));
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .horloge-number-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(91, 124, 255, 0.2);
+        }
+
+        .horloge-number-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .horloge-number-btn.completed {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
+            color: white;
+            border-color: var(--accent);
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .horloge-number-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .horloge-number-btn small {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        .horloge-counter {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .horloge-target-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 56px;
+            padding: 6px 8px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--surface-soft), var(--surface));
+            cursor: pointer;
+            transition: all 0.15s ease;
+            gap: 2px;
+        }
+
+        .horloge-targets-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 4px;
+            align-items: flex-start;
+            width: max-content;
+            max-width: 100%;
+        }
+
+        .horloge-players-grid {
+            display: grid;
+            grid-template-columns: repeat(5, max-content);
+            gap: 2px;
+            align-items: start;
+            justify-content: start;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .horloge-players-grid.horizontal-players {
+            display: flex;
+        }
+
+        .horloge-players-grid .zinch-player-card {
+            padding: 3px;
+            gap: 1px;
+            border-radius: 6px;
+            align-items: flex-start;
+            width: fit-content;
+            min-width: 0;
+            max-width: none;
+        }
+
+        .horloge-players-grid .zinch-player-top {
+            gap: 2px;
+            width: fit-content;
+            justify-content: flex-start;
+        }
+
+        .horloge-target-line {
+            display: inline-grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            column-gap: 7px;
+            min-height: 26px;
+            padding: 3px 7px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--surface-soft), var(--surface));
+            width: fit-content;
+        }
+
+        .horloge-target-line.completed {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
+            border-color: var(--accent);
+        }
+
+        .horloge-target-line.next {
+            box-shadow: 0 0 0 1px rgba(91, 124, 255, 0.25);
+        }
+
+        .horloge-icon-btn {
+            min-width: 28px;
+            min-height: 28px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-weight: 900;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .horloge-icon-btn.current {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(91, 124, 255, 0.22);
+        }
+
+        .horloge-player-name {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            white-space: nowrap;
+            overflow: visible;
+            text-overflow: clip;
+        }
+
+        .horloge-controls {
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .horloge-controls-right {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .horloge-next-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        .horloge-undo-btn {
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .horloge-menu-btn {
+            background: linear-gradient(135deg, #0b1220, #1f2937);
+            color: white;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .horloge-target-num {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            min-width: 1.6ch;
+            text-align: right;
+        }
+
+        .horloge-target-icon {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: var(--muted);
+            line-height: 1;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .horloge-target-line.completed .horloge-target-num,
+        .horloge-target-line.completed .horloge-target-icon {
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .horloge-players-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cricket-targets-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 4px;
+        }
+
+        .cricket-players-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(190px, 1fr));
+            gap: 2px;
+            align-items: start;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .cricket-players-grid.horizontal-players {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .cricket-players-grid .zinch-player-card {
+            padding: 3px;
+            gap: 1px;
+            border-radius: 6px;
+        }
+
+        .cricket-players-grid .zinch-player-top {
+            gap: 2px;
+        }
+
+        .cricket-players-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .cricket-players-grid::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.45);
+            border-radius: 999px;
+        }
+
+        .cricket-target-line {
+            display: grid;
+            grid-template-columns: minmax(2ch, max-content) max-content;
+            align-items: center;
+            column-gap: 8px;
+            min-height: 30px;
+            padding: 4px 8px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--surface-soft), var(--surface));
+        }
+
+        .cricket-target-line.readonly {
+            opacity: 0.7;
+        }
+
+        .cricket-target-line.completed {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
+            border-color: var(--accent);
+        }
+
+        .cricket-target-line.scoring {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(52, 212, 177, 0.28);
+        }
+
+        .cricket-target-line.neutral {
+            background: #e5e7eb;
+            border-color: #d1d5db;
+            opacity: 0.5;
+        }
+
+        .cricket-target-line.neutral .cricket-target-num,
+        .cricket-target-line.neutral .cricket-target-icon {
+            color: #9ca3af;
+        }
+
+        .cricket-icon-btn {
+            min-width: 28px;
+            min-height: 28px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-weight: 900;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .cricket-icon-btn:active {
+            transform: scale(0.9);
+        }
+
+        .cricket-target-num {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            min-width: 2ch;
+            text-align: right;
+        }
+
+        .cricket-target-line.completed .cricket-target-num,
+        .cricket-target-line.scoring .cricket-target-num {
+            color: white;
+        }
+
+        .cricket-target-icon {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: var(--muted);
+            line-height: 1;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .horloge-players-grid .zinch-total,
+        .cricket-players-grid .zinch-total {
+            font-size: 0.95rem;
+            min-width: 3ch;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cricket-players-grid .player-name-input {
+            padding: 4px 6px;
+            font-size: 0.82rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .horloge-target-line,
+            .cricket-target-line {
+                min-height: 36px;
+                padding: 5px 9px;
+            }
+
+            .horloge-icon-btn,
+            .cricket-icon-btn {
+                min-width: 32px;
+                min-height: 32px;
+                font-size: 1rem;
+            }
+
+            .horloge-target-num,
+            .cricket-target-num,
+            .horloge-target-icon,
+            .cricket-target-icon,
+            .horloge-player-name,
+            .cricket-players-grid .player-name-input {
+                font-size: 1rem;
+            }
+        }
+
+        .cricket-target-line.completed .cricket-target-icon,
+        .cricket-target-line.scoring .cricket-target-icon {
+            color: white;
+        }
+
+        .cricket-target-icon.hit {
+            color: var(--danger);
+        }
+
+        .cricket-target-icon.done {
+            color: white;
+        }
+
+        .darts-dart-btn.bull {
+            background: linear-gradient(135deg, #ff6b6b, var(--danger));
+            color: white;
+        }
+
+        .darts-score-display {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 16px 0;
+            padding: 12px;
+            background: var(--surface-soft);
+            border-radius: 12px;
+        }
+
+        .darts-picker-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .darts-picker-actions button:not(.zinch-action-btn) {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .darts-picker-actions .zinch-action-btn {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
         .zinch-input {
             width: 96px;
             padding: 6px 8px;
@@ -389,8 +1033,12 @@
 
         .zinch-current {
             text-align: center;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .zinch-winner {
@@ -416,7 +1064,8 @@
     <script>
         const STORAGE_KEY = 'jeux-app-state-v1';
         const THEME_KEY = 'jeux-theme';
-        const DEFAULT_STATE = { screen: 'home', game: null, playerCount: 0, players: [], currentPlayerIndex: 0, undoStack: [], nextZinchValue: 250, winnerId: null, gameFinished: false };
+        const MAX_PLAYERS = 10;
+        const DEFAULT_STATE = { screen: 'home', game: null, playerCount: 0, players: [], currentPlayerIndex: 0, undoStack: [], nextZinchValue: 250, winnerId: null, gameFinished: false, dartsDoubleOut: true, dartsVariant: null, horlogeMultiplicity: 1, horlogeMode: 'ordered', horlogeUndoStack: [] };
 
         let appState = loadState();
 
@@ -436,6 +1085,7 @@
                         entries: Array.isArray(player.entries) ? player.entries : []
                     })),
                     undoStack: Array.isArray(saved.undoStack) ? saved.undoStack : [],
+                    horlogeUndoStack: Array.isArray(saved.horlogeUndoStack) ? saved.horlogeUndoStack : [],
                     nextZinchValue: typeof saved.nextZinchValue === 'number' ? saved.nextZinchValue : 250,
                     winnerId: typeof saved.winnerId === 'number' ? saved.winnerId : null,
                     gameFinished: typeof saved.gameFinished === 'boolean' ? saved.gameFinished : false
@@ -512,8 +1162,10 @@
             appState.currentPlayerIndex = 0;
             saveState();
 
+            document.getElementById('app').classList.remove('horloge-layout');
+
             document.getElementById('app').innerHTML = `
-                <h1>🎮 Choisir un jeu</h1>
+                <h1>🎲 On veut jouer à quoi ?</h1>
                 <p class="subtitle">Sélectionne le mode de jeu à utiliser.</p>
 
                 <div class="card">
@@ -532,9 +1184,9 @@
                         <strong>Zinch</strong>
                         <small>Score, zinch et historique des tours</small>
                     </button>
-                    <button class="game-button" onclick="showComingSoon('Fléchette')">
+                    <button class="game-button" onclick="showDartsVariantMenu()">
                         <strong>Fléchette</strong>
-                        <small>Bientôt disponible</small>
+                        <small>501, Horloge, Cricket</small>
                     </button>
                 </div>
             `;
@@ -556,6 +1208,868 @@
             appState.game = 'zinch';
             saveState();
             renderPlayerSetupScreen('🎲 Nombre de joueurs', 'Choisis le nombre de participants pour le jeu Zinch.', 'handleZinchPlayerCountSubmit');
+        }
+
+        function showDartsVariantMenu() {
+            document.getElementById('app').innerHTML = `
+                <h1>🎯 Fléchette</h1>
+                <p class="subtitle">Choisis la variante que tu veux jouer.</p>
+
+                <div class="card game-grid">
+                    <button class="game-button" onclick="showDartsSetup('501')">
+                        <strong>501 Double Out</strong>
+                        <small>Compte à rebours de 501, doit finir sur un double</small>
+                    </button>
+                    <button class="game-button" onclick="showDartsSetup('horloge')">
+                        <strong>Horloge</strong>
+                        <small>Atteindre les numéros 1-20 en ordre</small>
+                    </button>
+                    <button class="game-button" onclick="showDartsSetup('cricket')">
+                        <strong>Cricket</strong>
+                        <small>Fermer les numéros et compter les points</small>
+                    </button>
+                    <button class="game-button btn-secondary" onclick="renderHome()">
+                        <strong>Retour</strong>
+                    </button>
+                </div>
+            `;
+        }
+
+        function showDartsSetup(variant) {
+            appState.screen = 'player-count';
+            appState.game = 'darts';
+            appState.dartsVariant = variant;
+            
+            if (variant === '501') {
+                // Affiche une page spéciale pour le 501 avec la checkbox
+                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+                const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
+                    const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
+                    return `
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="player-name-${index + 1}">Joueur ${index + 1}</label>
+                                <input id="player-name-${index + 1}" class="setup-name-input is-muted" type="text" value="${defaultValue}" placeholder="Joueur ${index + 1}" autocomplete="off" onfocus="this.classList.remove('is-muted'); if (this.value === '${defaultValue}') this.value = ''" onblur="if (!this.value.trim()) { this.value = '${defaultValue}'; this.classList.add('is-muted'); } else { this.classList.remove('is-muted'); }">
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('app').innerHTML = `
+                    <h1>🎯 501 Double Out</h1>
+                    <p class="subtitle">Configure ta partie.</p>
+
+                    <div class="card">
+                        <form id="darts-setup-form" onsubmit="return handleDartsSetupSubmit(event)">
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="playerCount">Nombre de joueurs</label>
+                                    <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
+                                </div>
+                            </div>
+                            <div id="player-name-fields">${nameInputsMarkup}</div>
+                            
+                            <div style="margin-top: 16px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
+                                <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer;">
+                                    <input type="checkbox" id="darts-double-out" checked>
+                                    <span>Finir par un double (Double Out)</span>
+                                </label>
+                            </div>
+                            
+                            <div class="actions" style="margin-top: 14px;">
+                                <button class="btn-reset" type="submit">Commencer</button>
+                                <button class="btn-secondary" type="button" onclick="showDartsVariantMenu()">Retour</button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                saveState();
+            } else if (variant === 'horloge') {
+                // Affiche une page spéciale pour l'horloge avec l'option 1x/3x
+                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+                const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
+                    const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
+                    return `
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="player-name-${index + 1}">Joueur ${index + 1}</label>
+                                <input id="player-name-${index + 1}" class="setup-name-input is-muted" type="text" value="${defaultValue}" placeholder="Joueur ${index + 1}" autocomplete="off" onfocus="this.classList.remove('is-muted'); if (this.value === '${defaultValue}') this.value = ''" onblur="if (!this.value.trim()) { this.value = '${defaultValue}'; this.classList.add('is-muted'); } else { this.classList.remove('is-muted'); }">
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('app').innerHTML = `
+                    <h1>🎯 Horloge</h1>
+                    <p class="subtitle">Configure ta partie.</p>
+
+                    <div class="card">
+                        <form id="darts-horloge-form" onsubmit="return handleDartsHorlogeSetupSubmit(event)">
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="playerCount">Nombre de joueurs</label>
+                                    <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
+                                </div>
+                            </div>
+                            <div id="player-name-fields">${nameInputsMarkup}</div>
+                            
+                            <div style="margin-top: 16px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Combien de fois pour chaque numéro ?</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
+                                        <input type="radio" name="horloge-multiplicity" value="1" checked>
+                                        <span>1 fois</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
+                                        <input type="radio" name="horloge-multiplicity" value="3">
+                                        <span>3 fois</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 12px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Mode Horloge</label>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; min-width: 170px;">
+                                        <input type="radio" name="horloge-mode" value="ordered" checked>
+                                        <span>Une par une</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; min-width: 170px;">
+                                        <input type="radio" name="horloge-mode" value="unordered">
+                                        <span>Dans le désordre</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="actions" style="margin-top: 14px;">
+                                <button class="btn-reset" type="submit">Commencer</button>
+                                <button class="btn-secondary" type="button" onclick="showDartsVariantMenu()">Retour</button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                saveState();
+            } else {
+                saveState();
+                renderPlayerSetupScreen(`🎯 Nombre de joueurs`, `Choisis le nombre de participants pour ${variant === 'horloge' ? 'l\'horloge' : 'le cricket'}.`, 'handleDartsPlayerCountSubmit');
+            }
+        }
+
+        function handleDartsHorlogeSetupSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('playerCount');
+            const count = parseInt(input.value, 10);
+            const multiplicity = parseInt(document.querySelector('input[name="horloge-multiplicity"]:checked').value, 10);
+            const modeInput = document.querySelector('input[name="horloge-mode"]:checked');
+            const mode = modeInput ? modeInput.value : 'ordered';
+
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
+                alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
+                return false;
+            }
+
+            appState.horlogeMultiplicity = multiplicity;
+            appState.horlogeMode = mode;
+            startDartsGame(count, collectPlayerNames(count), 'horloge');
+            return false;
+        }
+
+        function handleDartsSetupSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('playerCount');
+            const count = parseInt(input.value, 10);
+            const doubleOut = document.getElementById('darts-double-out').checked;
+
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
+                alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
+                return false;
+            }
+
+            appState.dartsDoubleOut = doubleOut;
+            startDartsGame(count, collectPlayerNames(count), '501');
+            return false;
+        }
+
+        function handleDartsPlayerCountSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('playerCount');
+            const count = parseInt(input.value, 10);
+
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
+                alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
+                return false;
+            }
+
+            startDartsGame(count, collectPlayerNames(count), appState.dartsVariant);
+            return false;
+        }
+
+        function startDartsGame(playerCount, playerNames = [], variant = '501') {
+            appState.screen = 'darts';
+            appState.game = 'darts';
+            appState.playerCount = playerCount;
+            appState.currentPlayerIndex = 0;
+            appState.dartsVariant = variant;
+            appState.horlogeUndoStack = [];
+            
+            if (variant === '501') {
+                appState.players = Array.from({ length: playerCount }, (_, index) => ({
+                    id: index + 1,
+                    name: playerNames[index] || `Joueur ${index + 1}`,
+                    score: 501,
+                    history: []
+                }));
+            } else if (variant === 'horloge') {
+                const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+                appState.players = Array.from({ length: playerCount }, (_, index) => ({
+                    id: index + 1,
+                    name: playerNames[index] || `Joueur ${index + 1}`,
+                    currentTarget: 1,
+                    horlogeHits: {},
+                    score: 0,
+                    history: []
+                }));
+                // Initialiser les hits pour chaque numéro
+                appState.players.forEach(player => {
+                    horlogeTargets.forEach(target => {
+                        player.horlogeHits[target] = 0;
+                    });
+                });
+            } else if (variant === 'cricket') {
+                const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
+                appState.players = Array.from({ length: playerCount }, (_, index) => ({
+                    id: index + 1,
+                    name: playerNames[index] || `Joueur ${index + 1}`,
+                    score: 0,
+                    closed: {},
+                    history: []
+                }));
+                // Initialiser les nombres fermés à 0 pour chaque joueur
+                appState.players.forEach(player => {
+                    cricketTargets.forEach(target => {
+                        player.closed[target] = 0;
+                    });
+                });
+            }
+            
+            saveState();
+            renderDartsBoard();
+        }
+
+        function renderDartsBoard() {
+            appState.screen = 'darts';
+            saveState();
+
+            const variant = appState.dartsVariant;
+            const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
+            const appElement = document.getElementById('app');
+
+            if (appElement) {
+                appElement.classList.toggle('horloge-layout', variant === 'horloge');
+            }
+            
+            let contentMarkup = '';
+            
+            if (variant === '501') {
+                contentMarkup = renderDarts501Board();
+            } else if (variant === 'horloge') {
+                contentMarkup = renderDartsHorlogeBoard();
+            } else if (variant === 'cricket') {
+                contentMarkup = renderDartsCricketBoard();
+            }
+
+            document.getElementById('app').innerHTML = `
+                <h1>🎯 Fléchette ${variant === '501' ? '501' : variant === 'horloge' ? 'Horloge' : 'Cricket'}</h1>
+                <div class="zinch-current">Tour de ${currentPlayer ? currentPlayer.name : '...'}</div>
+                ${contentMarkup}
+                
+                <div class="actions" style="margin-top: 6px;">
+                    <button class="btn-secondary" onclick="renderHome()">On veut jouer � quoi ?</button>
+                    <button class="btn-reset" onclick="resetDartsGame()">Réinitialiser la partie</button>
+                </div>
+                
+                <div id="darts-picker-container"></div>
+            `;
+        }
+
+        function renderDarts501Board() {
+            const playersContainerClass = 'players-container darts501-players-vertical';
+            const playersMarkup = appState.players.map((player, index) => `
+                <div class="player-card darts501-player-card ${index === appState.currentPlayerIndex ? 'current-player' : ''}">
+                    <div class="player-name">
+                        <input class="player-name-input" type="text" value="${player.name}" placeholder="Joueur" oninput="updatePlayerName(${player.id}, this.value)">
+                    </div>
+                    <div class="score-display" id="score-${player.id}">${player.score}</div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="card">
+                    <div class="zinch-controls">
+                        <button class="zinch-action-btn btn-plus" onclick="openDartsPicker('501')">Dart</button>
+                        <button class="zinch-action-btn btn-minus" onclick="renderHome()">⌂</button>
+                    </div>
+                </div>
+                
+                <div class="${playersContainerClass}">
+                    ${playersMarkup}
+                </div>
+            `;
+        }
+
+        function renderDartsHorlogeBoard() {
+            const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+            const horlogeMode = appState.horlogeMode || 'ordered';
+            const playersContainerClass = appState.playerCount > 5 ? 'players-container horloge-players-grid horizontal-players' : 'players-container horloge-players-grid';
+            const playersMarkup = appState.players.map((player, index) => {
+                const statusMarkup = horlogeTargets.map(target => {
+                    const hits = player.horlogeHits[target] || 0;
+                    const multiplicity = appState.horlogeMultiplicity || 1;
+                    let display = '-';
+                    if (hits === 1) display = '/';
+                    if (hits === 2) display = 'X';
+                    if (hits >= 3) display = 'O';
+                    const isCompleted = hits >= multiplicity;
+                    const isCurrentPlayer = index === appState.currentPlayerIndex;
+                    const currentTargetDisplay = player.currentTarget === 21 ? 25 : player.currentTarget === 22 ? 50 : player.currentTarget;
+                    const isCurrentTarget = currentTargetDisplay === target;
+                    const canClick = isCurrentPlayer && !isCompleted && (horlogeMode === 'unordered' || isCurrentTarget);
+                    if (canClick) {
+                        return `<div class="horloge-target-line ${isCompleted ? 'completed' : ''}">
+                            <span class="horloge-target-num">${target}</span>
+                            <button class="horloge-icon-btn current" onclick="addHorlogeHitDirect(${target})">${display}</button>
+                        </div>`;
+                    }
+                    return `<div class="horloge-target-line ${isCompleted ? 'completed' : ''} ${horlogeMode === 'ordered' && isCurrentTarget ? 'next' : ''}">
+                        <span class="horloge-target-num">${target}</span>
+                        <span class="horloge-target-icon">${display}</span>
+                    </div>`;
+                }).join('');
+
+                return `
+                    <div class="zinch-player-card ${index === appState.currentPlayerIndex ? 'current-player' : ''}">
+                        <div class="zinch-player-top">
+                            <div class="horloge-player-name">${player.name}</div>
+                            <div class="zinch-total">${player.score}</div>
+                        </div>
+                        <div class="horloge-targets-vertical">${statusMarkup}</div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="card">
+                    <div class="zinch-controls horloge-controls">
+                        <button class="zinch-action-btn horloge-next-btn" onclick="nextDartsHorlogePlayer()">→</button>
+                        <div class="horloge-controls-right">
+                            <button class="zinch-action-btn btn-minus horloge-undo-btn" onclick="undoLastHorlogeAction()">←</button>
+                            <button class="zinch-action-btn horloge-menu-btn" onclick="renderHome()">⌂</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="${playersContainerClass}">
+                    ${playersMarkup}
+                </div>
+            `;
+        }
+
+        function calcCricketScore(playerIndex) {
+            return appState.players[playerIndex].score || 0;
+        }
+
+        function renderDartsCricketBoard() {
+            const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
+            const playersContainerClass = appState.playerCount > 5 ? 'players-container cricket-players-grid horizontal-players' : 'players-container cricket-players-grid';
+            const playersMarkup = appState.players.map((player, index) => {
+                const isCurrent = index === appState.currentPlayerIndex;
+                const targetsMarkup = cricketTargets.map(target => {
+                    const closed = player.closed[target] || 0;
+                    let icon = '○';
+                    if (closed === 1) icon = '/';
+                    if (closed === 2) icon = 'X';
+                    if (closed >= 3) icon = 'O';
+                    const isCompleted = closed >= 3;
+                    const othersAllClosed = appState.players
+                        .filter((_, i) => i !== index)
+                        .every(other => (other.closed[target] || 0) >= 3);
+                    const allClosed = isCompleted && othersAllClosed;
+                    const isScoring = isCompleted && !othersAllClosed;
+                    if (isCurrent && (!isCompleted || isScoring)) {
+                        const targetArg = typeof target === 'string' ? `'${target}'` : target;
+                        return `<div class="cricket-target-line ${isScoring ? 'scoring' : ''}">
+                            <span class="cricket-target-num">${target}</span>
+                            <button class="cricket-icon-btn ${closed > 0 ? 'hit' : ''} ${isCompleted ? 'done' : ''}" onclick="addCricketHitDirect(${targetArg})">${icon}</button>
+                        </div>`;
+                    } else {
+                        return `<div class="cricket-target-line readonly ${allClosed ? 'neutral' : isScoring ? 'scoring' : isCompleted ? 'completed' : ''}">
+                            <span class="cricket-target-num">${target}</span>
+                            <span class="cricket-target-icon ${closed > 0 ? 'hit' : ''} ${isCompleted ? 'done' : ''}">${icon}</span>
+                        </div>`;
+                    }
+                }).join('');
+                const displayScore = calcCricketScore(index);
+
+                return `
+                    <div class="zinch-player-card ${isCurrent ? 'current-player' : ''}">
+                        <div class="zinch-player-top">
+                            <input class="player-name-input" type="text" value="${player.name}" placeholder="Joueur" oninput="updatePlayerName(${player.id}, this.value)">
+                            <div class="zinch-total">${displayScore}</div>
+                        </div>
+                        <div class="cricket-targets-vertical">${targetsMarkup}</div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="card">
+                    <div class="zinch-controls">
+                        <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastCricketHit()">←</button>
+                        <button class="zinch-action-btn btn-arrow-up" onclick="nextCricketPlayer()">→</button>
+                    </div>
+                </div>
+                
+                <div class="${playersContainerClass}">
+                    ${playersMarkup}
+                </div>
+            `;
+        }
+
+        function submitDarts501DoubleFinish() {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            
+            if (currentPlayer.score !== 0) {
+                alert('Vous devez arriver à exactement 0 !');
+                return;
+            }
+            
+            alert(`🏆 ${currentPlayer.name} a gagné !`);
+            renderHome();
+        }
+
+        function nextDartsHorlogePlayer() {
+            appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
+            saveState();
+            renderDartsBoard();
+        }
+
+        function addHorlogeHitDirect(target) {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            const multiplicity = appState.horlogeMultiplicity || 1;
+            const horlogeMode = appState.horlogeMode || 'ordered';
+            const currentTargetDisplay = currentPlayer.currentTarget === 21 ? 25 : currentPlayer.currentTarget === 22 ? 50 : currentPlayer.currentTarget;
+
+            // Respecter l'ordre Horloge
+            if (horlogeMode === 'ordered' && target !== currentTargetDisplay) {
+                return;
+            }
+
+            const oldHits = currentPlayer.horlogeHits[target] || 0;
+            if (oldHits >= multiplicity) {
+                return;
+            }
+
+            // Sauvegarder l'action pour annulation pas à pas
+            appState.horlogeUndoStack.push({
+                playerIndex: appState.currentPlayerIndex,
+                target,
+                oldHits,
+                oldScore: currentPlayer.score,
+                oldCurrentTarget: currentPlayer.currentTarget
+            });
+            if (appState.horlogeUndoStack.length > 100) {
+                appState.horlogeUndoStack.shift();
+            }
+
+            const newHits = oldHits + 1;
+            currentPlayer.horlogeHits[target] = newHits;
+            currentPlayer.score += target;
+
+            if (horlogeMode === 'ordered' && newHits >= multiplicity) {
+                const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+                const currentIndex = horlogeTargets.indexOf(currentTargetDisplay);
+                if (currentIndex === horlogeTargets.length - 1) {
+                    saveState();
+                    alert(`🏆 ${currentPlayer.name} a gagné !`);
+                    renderHome();
+                    return;
+                }
+                const nextDisplay = horlogeTargets[currentIndex + 1];
+                currentPlayer.currentTarget = nextDisplay === 25 ? 21 : nextDisplay === 50 ? 22 : nextDisplay;
+            } else if (horlogeMode === 'unordered') {
+                const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+                const allCompleted = horlogeTargets.every(t => (currentPlayer.horlogeHits[t] || 0) >= multiplicity);
+                if (allCompleted) {
+                    saveState();
+                    alert(`🏆 ${currentPlayer.name} a gagné !`);
+                    renderHome();
+                    return;
+                }
+            }
+
+            saveState();
+            renderDartsBoard();
+        }
+
+        function undoLastHorlogeAction() {
+            if (!Array.isArray(appState.horlogeUndoStack) || appState.horlogeUndoStack.length === 0) {
+                return;
+            }
+
+            const last = appState.horlogeUndoStack.pop();
+            const player = appState.players[last.playerIndex];
+            if (!player) {
+                saveState();
+                renderDartsBoard();
+                return;
+            }
+
+            player.horlogeHits[last.target] = last.oldHits;
+            player.score = last.oldScore;
+            player.currentTarget = last.oldCurrentTarget;
+            appState.currentPlayerIndex = last.playerIndex;
+
+            saveState();
+            renderDartsBoard();
+        }
+
+        let dartsCurrentVolee = [];
+        let dartsCricketVolee = [];
+        let horlogeSessionHits = {};
+
+        function openDartsPickerHorloge() {
+            const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+            const multiplicity = appState.horlogeMultiplicity || 1;
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            
+            // Initialiser ou charger les compteurs de la session
+            if (!horlogeSessionHits[currentPlayer.id]) {
+                horlogeSessionHits[currentPlayer.id] = {};
+                horlogeTargets.forEach(target => {
+                    horlogeSessionHits[currentPlayer.id][target] = currentPlayer.horlogeHits[target] || 0;
+                });
+            }
+            
+            const buttonsGrid = horlogeTargets.map(target => {
+                const hits = horlogeSessionHits[currentPlayer.id][target] || 0;
+                const isCompleted = hits >= multiplicity;
+                let content = target.toString();
+                if (hits > 0) {
+                    content = `${target}<span class="horloge-counter">${hits}/${multiplicity}</span>`;
+                }
+                return `<button class="horloge-number-btn ${isCompleted ? 'completed' : ''}" onclick="addHorlogeHit(${target})" ${isCompleted ? 'disabled' : ''}>${content}</button>`;
+            }).join('');
+            
+            const html = `
+                <div class="darts-picker-modal active" id="horloge-picker-modal" onclick="closeHorlogePicker(event)">
+                    <div class="darts-picker-content" style="max-width: 90vw; padding: 12px;" onclick="event.stopPropagation()">
+                        <h2 style="text-align: center; margin: 0 0 8px; font-size: 1.1rem;">${currentPlayer.name}</h2>
+                        <p style="text-align: center; margin: 0 0 12px; font-size: 0.9rem; color: var(--muted);">Multiplicity: ${multiplicity}x</p>
+                        <div class="horloge-grid">
+                            ${buttonsGrid}
+                        </div>
+                        <div class="darts-picker-actions" style="margin-top: 16px;">
+                            <button class="zinch-action-btn btn-plus" onclick="confirmHorlogeTurn()">+</button>
+                            <button class="zinch-action-btn btn-minus" onclick="undoHorlogeHit()" style="font-weight: 900;">←</button>
+                            <button class="zinch-action-btn z-inch-undo-btn" onclick="closeHorlogePicker()" style="font-size: 1.1rem; font-weight: 900;">✕</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.getElementById('darts-picker-container');
+            if (container) {
+                container.innerHTML = html;
+            }
+        }
+
+        function addHorlogeHit(target) {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            const multiplicity = appState.horlogeMultiplicity || 1;
+            
+            if (!horlogeSessionHits[currentPlayer.id]) {
+                horlogeSessionHits[currentPlayer.id] = {};
+            }
+            
+            const hits = (horlogeSessionHits[currentPlayer.id][target] || 0) + 1;
+            if (hits <= 3) {
+                horlogeSessionHits[currentPlayer.id][target] = hits;
+                openDartsPickerHorloge(); // Rafraîchir l'affichage
+            }
+        }
+
+        function undoHorlogeHit() {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+            if (!horlogeSessionHits[currentPlayer.id]) return;
+            // Annuler le dernier hit en session (chercher le plus grand numéro modifié)
+            for (let i = horlogeTargets.length - 1; i >= 0; i--) {
+                const target = horlogeTargets[i];
+                const sessionHits = horlogeSessionHits[currentPlayer.id][target] || 0;
+                const savedHits = currentPlayer.horlogeHits[target] || 0;
+                if (sessionHits > savedHits) {
+                    horlogeSessionHits[currentPlayer.id][target] = sessionHits - 1;
+                    openDartsPickerHorloge();
+                    return;
+                }
+            }
+        }
+
+        function confirmHorlogeTurn() {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            const multiplicity = appState.horlogeMultiplicity || 1;
+            const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
+            
+            // Appliquer les hits au joueur
+            horlogeTargets.forEach(target => {
+                const newHits = horlogeSessionHits[currentPlayer.id][target] || 0;
+                const oldHits = currentPlayer.horlogeHits[target] || 0;
+                
+                if (newHits > oldHits) {
+                    currentPlayer.horlogeHits[target] = newHits;
+                    // Ajouter les points si c'est un nouveau hit
+                    for (let i = oldHits; i < newHits; i++) {
+                        currentPlayer.score += target;
+                    }
+                }
+            });
+            
+            // Vérifier si le joueur a complété la cible actuelle
+            const currentTarget = currentPlayer.currentTarget;
+            const currentHits = currentPlayer.horlogeHits[currentTarget] || 0;
+            
+            if (currentHits >= multiplicity) {
+                let nextTarget = currentTarget + 1;
+                if (nextTarget > 20) {
+                    nextTarget = 21; // 25
+                } else if (nextTarget === 21) {
+                    nextTarget = 22; // 50
+                } else if (nextTarget > 22) {
+                    // Jeu terminé
+                    alert(`🏆 ${currentPlayer.name} a gagné !`);
+                    renderHome();
+                    return;
+                }
+                currentPlayer.currentTarget = nextTarget;
+            }
+            
+            saveState();
+            delete horlogeSessionHits[currentPlayer.id]; // Réinitialiser pour le prochain tour
+            closeHorlogePicker();
+            nextDartsHorlogePlayer();
+        }
+
+        function closeHorlogePicker(event) {
+            if (event && event.target.id !== 'horloge-picker-modal') return;
+            const container = document.getElementById('darts-picker-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+            horlogeSessionHits = {}; // Réinitialiser
+        }
+
+        function openDartsPicker(variant) {
+            dartsCurrentVolee = [];
+            dartsCricketVolee = [];
+            let dartsGrid = '';
+
+            if (variant === '501') {
+                // Un bouton par numéro, on peut cliquer plusieurs fois
+                for (let i = 1; i <= 20; i++) {
+                    dartsGrid += `<button class="darts-dart-btn single" onclick="addDartScore(${i})">${i}</button>`;
+                }
+                dartsGrid += `
+                    <button class="darts-dart-btn single" onclick="addDartScore(25)">25</button>
+                    <button class="darts-dart-btn double" onclick="addDartScore(50)">50</button>
+                `;
+            } else if (variant === 'cricket') {
+                // Un bouton par cible, on peut cliquer plusieurs fois
+                const targets = [20, 19, 18, 17, 16, 15];
+                targets.forEach(target => {
+                    dartsGrid += `<button class="darts-dart-btn single" onclick="addCricketDart(${target})">${target}</button>`;
+                });
+                dartsGrid += `<button class="darts-dart-btn double" onclick="addCricketDart('B')">B</button>`;
+            }
+
+            const html = `
+                <div class="darts-picker-modal active" id="darts-picker-modal" onclick="closeDartsPicker(event)">
+                    <div class="darts-picker-content" onclick="event.stopPropagation()">
+                        <h2 style="text-align: center; margin: 0 0 8px;">Sélectionne tes fléchettes</h2>
+                        <div class="darts-score-display" id="darts-volley-score">0</div>
+                        <div class="darts-picker-grid">
+                            ${dartsGrid}
+                        </div>
+                        <div class="darts-picker-actions">
+                            <button class="zinch-action-btn btn-plus" onclick="validateDartsVolley('${variant}')">+</button>
+                            <button class="zinch-action-btn btn-minus" onclick="undoLastDart()" style="font-weight: 900;">←</button>
+                            <button class="zinch-action-btn z-inch-undo-btn" onclick="closeDartsPicker()" style="font-size: 1.1rem; font-weight: 900;">✕</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Ajouter la modale au conteneur dédié
+            const container = document.getElementById('darts-picker-container');
+            if (container) {
+                container.innerHTML = html;
+            }
+        }
+
+        function addDartScore(score) {
+            dartsCurrentVolee.push(score);
+            updateVolleyDisplay();
+        }
+
+        function undoLastDart() {
+            if (dartsCurrentVolee.length > 0) {
+                dartsCurrentVolee.pop();
+            } else if (dartsCricketVolee.length > 0) {
+                dartsCricketVolee.pop();
+            }
+            updateVolleyDisplay();
+        }
+
+        function updateVolleyDisplay() {
+            const display = document.getElementById('darts-volley-score');
+            if (display) {
+                const total = dartsCurrentVolee.reduce((a, b) => a + b, 0);
+                const cricketCount = dartsCricketVolee.length;
+                display.textContent = dartsCurrentVolee.length > 0 ? total : cricketCount;
+            }
+        }
+
+        function addCricketDart(target) {
+            dartsCricketVolee.push(target);
+            updateVolleyDisplay();
+        }
+
+        function closeDartsPicker(event) {
+            if (event && event.target.id !== 'darts-picker-modal') return;
+            const container = document.getElementById('darts-picker-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+        }
+
+        function validateDartsVolley(variant) {
+            if (variant === '501') {
+                const currentPlayer = appState.players[appState.currentPlayerIndex];
+                const scoreVolley = dartsCurrentVolee.reduce((a, b) => a + b, 0);
+                const newScore = currentPlayer.score - scoreVolley;
+                
+                // Vérifier le double out
+                if (appState.dartsDoubleOut && newScore === 1) {
+                    alert('❌ Impossible de finir à 1 avec un double ! (Double Out)');
+                    return;
+                }
+                
+                currentPlayer.score = newScore;
+                
+                if (currentPlayer.score < 0) {
+                    currentPlayer.score += scoreVolley;
+                    alert('❌ Vous avez cassé ! (dépassement)');
+                } else if (currentPlayer.score === 0) {
+                    alert(`🏆 ${currentPlayer.name} a gagné !`);
+                    renderHome();
+                    return;
+                }
+                
+                saveState();
+                appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
+                saveState();
+                closeDartsPicker();
+                renderDartsBoard();
+            } else if (variant === 'cricket') {
+                const currentPlayer = appState.players[appState.currentPlayerIndex];
+                const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
+
+                dartsCricketVolee.forEach(target => {
+                    if (!cricketTargets.includes(target)) return;
+
+                    const closed = (currentPlayer.closed[target] || 0) + 1;
+                    currentPlayer.closed[target] = Math.min(3, closed);
+
+                    // Si le nombre est fermé et que le joueur a du supplément, ajouter les points
+                    if (closed > 3) {
+                        const value = target === 'B' ? 25 : Number(target);
+                        currentPlayer.score += value;
+                    }
+                });
+
+                saveState();
+                closeDartsPicker();
+                nextCricketPlayer();
+            }
+        }
+
+
+
+        function nextCricketPlayer() {
+            appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
+            saveState();
+            renderDartsBoard();
+        }
+
+        function addCricketHitDirect(target) {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            // S'assurer que closed est initialisé (cas du rechargement)
+            if (!currentPlayer.closed) currentPlayer.closed = {};
+            const old = currentPlayer.closed[target] || 0;
+            const newHits = old + 1;
+            currentPlayer.closed[target] = newHits;
+
+            // À partir du 4e coup, marquer des points si au moins un adversaire n'a pas fermé
+            if (newHits > 3) {
+                const othersAllClosed = appState.players
+                    .filter(p => p.id !== currentPlayer.id)
+                    .every(other => ((other.closed || {})[target] || 0) >= 3);
+                if (!othersAllClosed) {
+                    const value = (target === 'B' || target === 'b') ? 25 : Number(target);
+                    currentPlayer.score += value;
+                }
+            }
+
+            // Vérifier victoire : toutes les cibles fermées ET score le plus élevé
+            const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
+            const allClosed = cricketTargets.every(t => (currentPlayer.closed[t] || 0) >= 3);
+            if (allClosed) {
+                const myScore = currentPlayer.score;
+                const hasHighestScore = appState.players.every(p => p.id === currentPlayer.id || p.score <= myScore);
+                if (hasHighestScore) {
+                    saveState();
+                    alert(`🏆 ${currentPlayer.name} a gagné !`);
+                    renderHome();
+                    return;
+                }
+            }
+
+            saveState();
+            renderDartsBoard();
+        }
+
+        function recalcCricketScores() {}
+
+        function undoLastCricketHit() {
+            const currentPlayer = appState.players[appState.currentPlayerIndex];
+            const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
+            // Trouver la dernière cible qui a des coups
+            for (let i = cricketTargets.length - 1; i >= 0; i--) {
+                const target = cricketTargets[i];
+                if ((currentPlayer.closed[target] || 0) > 0) {
+                    currentPlayer.closed[target]--;
+                    saveState();
+                    renderDartsBoard();
+                    return;
+                }
+            }
+        }
+
+        function resetDartsGame() {
+            if (confirm('Êtes-vous sûr ? La partie sera réinitialisée.')) {
+                const variant = appState.dartsVariant;
+                const playerNames = appState.players.map(p => p.name);
+                startDartsGame(appState.playerCount, playerNames, variant);
+            }
         }
 
         function renderPlayerSetupScreen(title, subtitle, submitHandlerName) {
@@ -581,7 +2095,7 @@
                         <div class="field-row">
                             <div class="field">
                                 <label for="playerCount">Nombre de joueurs</label>
-                                <input id="playerCount" name="playerCount" type="number" min="1" max="5" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
+                                <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
                             </div>
                         </div>
                         <div id="player-name-fields">${nameInputsMarkup}</div>
@@ -596,7 +2110,7 @@
 
         function refreshPlayerNameFields(value) {
             const count = parseInt(value, 10);
-            if (Number.isNaN(count) || count < 1 || count > 5) return;
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) return;
 
             const existingValues = Array.from(document.querySelectorAll('.setup-name-input')).map(input => input.value.trim());
             const container = document.getElementById('player-name-fields');
@@ -632,8 +2146,8 @@
             const input = document.getElementById('playerCount');
             const count = parseInt(input.value, 10);
 
-            if (Number.isNaN(count) || count < 1 || count > 5) {
-                alert('Le nombre de joueurs doit être compris entre 1 et 5.');
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
+                alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
                 return false;
             }
 
@@ -646,8 +2160,8 @@
             const input = document.getElementById('playerCount');
             const count = parseInt(input.value, 10);
 
-            if (Number.isNaN(count) || count < 1 || count > 5) {
-                alert('Le nombre de joueurs doit être compris entre 1 et 5.');
+            if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
+                alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
                 return false;
             }
 
@@ -696,15 +2210,13 @@
                     </div>
                     <div class="score-display" id="score-${player.id}">${player.score}</div>
                     <div class="score-controls">
+                        <button class="btn-arrow-up" onclick="updateScore(${player.id}, 1)" aria-label="Augmenter">⬆</button>
+                        <button class="btn-arrow-down" onclick="updateScore(${player.id}, -1)" aria-label="Diminuer">⬇</button>
                         <input class="score-input" id="input-${player.id}" type="number" min="0" max="9999" step="1" value="0" placeholder="0">
                         <div class="icon-btn-container">
                             <button class="icon-btn icon-btn-green" onclick="addScore(${player.id})" aria-label="Valider l'ajout">=</button>
                         </div>
-                        <div class="buttons">
-                            <button class="btn-plus" onclick="updateScore(${player.id}, 1)">+</button>
-                            <button class="btn-minus" onclick="updateScore(${player.id}, -1)">-</button>
-                            <button class="icon-btn icon-btn-red" onclick="undoLastAddition(${player.id})" aria-label="Annuler le dernier ajout">←</button>
-                        </div>
+                        <button class="icon-btn icon-btn-red" onclick="undoLastAddition(${player.id})" aria-label="Annuler le dernier ajout">←</button>
                     </div>
                 </div>
             `).join('');
@@ -718,8 +2230,7 @@
                 </div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="undoLastAction()">Annuler la dernière action</button>
-                    <button class="btn-secondary" onclick="renderHome()">Choisir un autre jeu</button>
+                    <button class="btn-secondary" onclick="renderHome()">On veut jouer � quoi ?</button>
                     <button class="btn-reset" onclick="resetScores()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -739,7 +2250,7 @@
                 const zinchStreak = getConsecutiveZinchCount(player);
                 const isRed = zinchStreak > 0 && zinchStreak % 3 === 2;
                 const linesMarkup = historyEntries.map(entry => `
-                    <span class="zinch-line ${entry.type === 'zinch' ? 'zinch' : ''}">${entry.type === 'zinch' ? 'Z' : entry.value}</span>
+                    <span class="zinch-line ${entry.type === 'zinch' ? 'zinch' : ''} ${entry.type === 'score' && entry.value >= 1000 ? 'high-score' : ''}">${entry.type === 'zinch' ? 'Z' : entry.value}</span>
                 `).join('');
 
                 return `
@@ -755,17 +2266,17 @@
 
             document.getElementById('app').innerHTML = `
                 <h1>🎲 Zinch</h1>
-                <p class="subtitle">Tour de ${currentPlayer ? currentPlayer.name : '...'}</p>
-                <div class="zinch-current">${currentPlayer ? currentPlayer.name : '...'}</div>
+                <div class="zinch-current">Tour de ${currentPlayer ? currentPlayer.name : '...'}</div>
                 ${winnerPlayer ? `<div class="zinch-winner">🏆 Gagnant : ${winnerPlayer.name}</div>` : ''}
                 ${appState.gameFinished ? `<div class="zinch-winner zinch-winner-finished">Partie terminée après un Zinch.</div>` : ''}
 
                 <div class="card">
                     <div class="zinch-controls">
                         <input id="zinch-score-input" class="zinch-input" type="number" min="50" max="10000" step="50" value="${defaultZinchValue}" placeholder="250">
-                        <button class="btn-plus" onclick="addZinchScore()">Ajouter</button>
-                        <button class="btn-minus" onclick="addZinchZ()">Zinch</button>
-                        <button class="zinch-undo-btn" onclick="undoLastAction()">Annuler</button>
+                        <button class="zinch-action-btn btn-arrow-up" onclick="addZinchPlus50()">⬆</button>
+                        <button class="zinch-action-btn btn-plus" onclick="addZinchScore()">+</button>
+                        <button class="zinch-action-btn btn-minus" onclick="addZinchZ()">Z</button>
+                        <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastAction()">✕</button>
                     </div>
                 </div>
 
@@ -774,7 +2285,7 @@
                 </div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">Choisir un autre jeu</button>
+                    <button class="btn-secondary" onclick="renderHome()">On veut jouer � quoi ?</button>
                     <button class="btn-reset" onclick="resetZinchGame()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -843,6 +2354,18 @@
             const scoreEl = document.getElementById(`score-${id}`);
             if (scoreEl) {
                 scoreEl.textContent = player.score;
+            }
+        }
+
+        function addZinchPlus50() {
+            const input = document.getElementById('zinch-score-input');
+            if (!input) return;
+
+            const currentValue = parseInt(input.value, 10) || 250;
+            const newValue = currentValue + 50;
+            
+            if (newValue <= 10000) {
+                input.value = newValue;
             }
         }
 
@@ -992,3 +2515,5 @@
     </script>
 </body>
 </html>
+
+
