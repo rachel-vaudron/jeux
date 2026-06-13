@@ -23,9 +23,10 @@
 
         body.dark-theme {
             color-scheme: dark;
-            --primary: #1f5bd8;
-            --primary-dark: #123f9f;
-            --accent: #0f9d7a;
+            background:
+                radial-gradient(880px 420px at 18% -8%, rgba(116, 230, 255, 0.24), rgba(116, 230, 255, 0) 62%),
+                radial-gradient(760px 360px at 82% 8%, rgba(255, 198, 123, 0.16), rgba(255, 198, 123, 0) 65%),
+                linear-gradient(180deg, #041a2c 0%, #062845 36%, #0b3659 56%, #172a56 78%, #201f4f 100%);
             --danger: #d83a3a;
             --surface: #ffffff;
             --surface-soft: #f8f9fe;
@@ -54,9 +55,7 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:
-                radial-gradient(1200px 420px at 15% -10%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 60%),
-                linear-gradient(180deg, #dff6ff 0%, #7dd4e8 34%, #2fa6c4 48%, #2a86ab 60%, #e6c58f 76%, #f4d9a8 100%);
+            background: url('fond_sable.jpg') center 100% / cover no-repeat scroll;
             margin: 0;
             padding: 24px 16px 40px;
             color: var(--text);
@@ -86,6 +85,19 @@
                 linear-gradient(180deg, rgba(10, 34, 52, 0.06), rgba(10, 34, 52, 0.14));
             pointer-events: none;
         }
+
+        body::before {
+            background: none;
+            opacity: 0;
+            background-size: auto;
+            background-position: center;
+        }
+
+        body::after {
+            background:
+                linear-gradient(180deg, rgba(8, 18, 35, 0.12), rgba(8, 18, 35, 0.28));
+            opacity: 1;
+        }
         #app {
             max-width: 520px;
             margin: 0 auto;
@@ -105,6 +117,39 @@
             text-align: center;
             letter-spacing: -0.02em;
             color: #000;
+        }
+
+        .game-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 6px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.9), rgba(246, 233, 208, 0.82));
+            border: 1px solid rgba(117, 98, 70, 0.22);
+            box-shadow: 0 6px 16px rgba(17, 24, 39, 0.1);
+        }
+
+        .game-header h1 {
+            margin: 0;
+            text-align: left;
+        }
+
+        .game-header-turn {
+            text-align: right;
+            font-weight: 800;
+            font-size: 1.18rem;
+            color: var(--primary-dark);
+            white-space: nowrap;
+            max-width: 62%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .game-header-turn .current-player-name {
+            font-weight: 900;
         }
 
         .subtitle {
@@ -222,7 +267,8 @@
             padding: 4px 6px;
             border: 1px solid var(--border);
             border-radius: 8px;
-            font-size: 0.82rem;
+            font-size: 1rem;
+            font-weight: 700;
             background: var(--surface-soft);
             color: var(--text);
         }
@@ -322,11 +368,11 @@
         button:active { transform: scale(0.96); }
         .zinch-action-btn {
             padding: 0;
-            font-size: 1.2rem;
-            min-width: 48px;
-            min-height: 42px;
-            width: 64px;
-            height: 42px;
+            font-size: 1.32rem;
+            min-width: 56px;
+            min-height: 46px;
+            width: 56px;
+            height: 46px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -504,16 +550,62 @@
 
         .zinch-controls {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            flex-wrap: nowrap;
+            gap: 6px;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            overflow-x: auto;
+            padding-bottom: 2px;
+            --zinch-btn-h: 46px;
+            --zinch-btn-gap: 6px;
+            --zinch-tall-btn-w: 74px;
+        }
+
+        .zinch-controls .zinch-action-btn {
+            height: var(--zinch-btn-h);
+            min-height: var(--zinch-btn-h);
+        }
+
+        .zinch-arrow-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--zinch-btn-gap);
+        }
+
+        .zinch-controls .zinch-plus-tall {
+            width: var(--zinch-tall-btn-w);
+            min-width: var(--zinch-tall-btn-w);
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            font-size: 1.42rem;
+        }
+
+        .zinch-controls .btn-minus {
+            width: var(--zinch-tall-btn-w);
+            min-width: var(--zinch-tall-btn-w);
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            font-size: 1.22rem;
+        }
+
+        .zinch-controls .btn-arrow-up,
+        .zinch-controls .btn-arrow-down {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
         }
 
         .z-inch-undo-btn {
-            background: linear-gradient(135deg, #ff5b5b 0%, #d63b3b 100%);
+            background: linear-gradient(135deg, #8a96aa 0%, #64748b 100%);
             color: white;
-            box-shadow: 0 4px 12px rgba(214, 59, 59, 0.25);
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.28);
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .zinch-controls .z-inch-undo-btn {
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
         }
 
         .setup-name-input {
@@ -758,8 +850,8 @@
         }
 
         .horloge-player-name {
-            font-size: 0.78rem;
-            font-weight: 700;
+            font-size: 0.92rem;
+            font-weight: 800;
             color: var(--text);
             line-height: 1;
             white-space: nowrap;
@@ -786,7 +878,12 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             font-weight: 900;
-            font-size: 1.3rem;
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-width: calc(var(--zinch-tall-btn-w) * 2);
+            font-size: 2rem;
+            line-height: 1;
+            flex: 0 0 auto;
         }
 
         .horloge-undo-btn {
@@ -815,14 +912,28 @@
             line-height: 1;
         }
 
-        .cricket-next-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        .cricket-controls .cricket-next-btn {
+            background: linear-gradient(135deg, #34d4b1, var(--accent));
             color: white;
             font-weight: 900;
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            font-size: 1.9rem;
+            line-height: 1;
+            flex: 1 1 0;
+            width: 0;
+            min-width: 0;
         }
 
-        .cricket-undo-btn {
+        .cricket-controls .cricket-undo-btn {
             font-weight: 900;
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            font-size: 1.55rem;
+            line-height: 1;
+            flex: 1 1 0;
+            width: 0;
+            min-width: 0;
         }
 
         .horloge-target-num {
@@ -862,6 +973,10 @@
             width: max-content;
         }
 
+        .horloge-matrix-row {
+            margin-bottom: 6px;
+        }
+
         .horloge-matrix-header {
             margin-bottom: 4px;
             position: sticky;
@@ -885,12 +1000,15 @@
         }
 
         .horloge-left-corner {
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             min-height: 42px;
+            padding: 0 6px;
+            width: 78px;
+            min-width: 78px;
         }
 
         .horloge-left-target {
-            min-height: 28px;
+            min-height: 38px;
             font-size: 0.8rem;
         }
 
@@ -920,11 +1038,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             text-align: center;
-            font-size: 0.68rem;
+            font-size: 0.9rem;
         }
 
         .horloge-col-head .zinch-total {
-            font-size: 0.75rem;
+            font-size: 0.96rem;
             line-height: 1;
             min-width: 0;
         }
@@ -932,7 +1050,7 @@
         .horloge-cell {
             width: 54px;
             min-width: 54px;
-            min-height: 28px;
+            min-height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -998,6 +1116,10 @@
             width: max-content;
         }
 
+        .cricket-matrix-row {
+            margin-bottom: 6px;
+        }
+
         .cricket-matrix-header {
             margin-bottom: 4px;
         }
@@ -1019,11 +1141,14 @@
 
         .cricket-left-corner {
             min-height: 38px;
-            font-size: 0.84rem;
+            font-size: 0.78rem;
+            padding: 0 6px;
+            width: 78px;
+            min-width: 78px;
         }
 
         .cricket-left-target {
-            min-height: 26px;
+            min-height: 38px;
             font-size: 0.76rem;
         }
 
@@ -1035,9 +1160,11 @@
             border-radius: 10px;
             background: linear-gradient(145deg, var(--surface), var(--surface-soft));
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3px;
+            gap: 2px;
+            padding: 3px 4px;
         }
 
         .cricket-col-head.current-player {
@@ -1046,15 +1173,26 @@
         }
 
         .cricket-col-head .zinch-total {
-            font-size: 0.74rem;
+            font-size: 1rem;
             min-width: 0;
+            line-height: 1;
+        }
+
+        .cricket-player-name {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 800;
             line-height: 1;
         }
 
         .cricket-cell {
             width: var(--cricket-col-size, 44px);
             min-width: var(--cricket-col-size, 44px);
-            min-height: 26px;
+            min-height: 38px;
             border: 1px solid var(--border);
             border-radius: 8px;
             display: flex;
@@ -1086,6 +1224,15 @@
 
         .cricket-cell.current-col {
             border-color: color-mix(in srgb, var(--primary) 60%, var(--border) 40%);
+        }
+
+        .cricket-cell.clickable {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .cricket-cell.clickable:active {
+            transform: scale(0.98);
         }
 
         .cricket-cell-icon {
@@ -1326,14 +1473,24 @@
             font-weight: 700;
         }
 
+        .darts-picker-actions .btn-plus {
+            height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            min-width: calc(var(--zinch-tall-btn-w) * 1.35);
+            font-size: 1.9rem;
+            line-height: 1;
+            flex: 0 0 auto;
+        }
+
         .zinch-input {
-            width: 96px;
-            padding: 6px 8px;
+            width: 120px;
+            padding: 8px 10px;
             border: 1px solid var(--border);
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-align: center;
-            height: 38px;
+            height: 46px;
             background: var(--surface-soft);
             color: var(--text);
         }
@@ -1396,6 +1553,39 @@
             margin-bottom: 8px;
             text-wrap: balance;
             text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+            padding: 8px 12px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.9), rgba(246, 233, 208, 0.82));
+            border: 1px solid rgba(117, 98, 70, 0.22);
+            box-shadow: 0 6px 16px rgba(17, 24, 39, 0.1);
+        }
+
+        h1 + .subtitle {
+            margin: 6px 0 8px;
+            padding: 0 12px 10px;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.9), rgba(246, 233, 208, 0.82));
+            border: 1px solid rgba(117, 98, 70, 0.22);
+            border-top: 1px solid rgba(117, 98, 70, 0.22);
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(17, 24, 39, 0.1);
+        }
+
+        .game-header h1 {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        h2,
+        h3 {
+            padding: 6px 10px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.9), rgba(246, 233, 208, 0.82));
+            border: 1px solid rgba(117, 98, 70, 0.22);
+            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
         }
 
         .subtitle {
@@ -1555,7 +1745,8 @@
             border-radius: 12px;
             border: 1px solid color-mix(in srgb, var(--border) 86%, white 14%);
             background: color-mix(in srgb, var(--surface-soft) 82%, white 18%);
-            min-height: 38px;
+            min-height: 42px;
+            font-size: 1.06rem;
         }
 
         .actions {
@@ -1582,9 +1773,16 @@
             animation: fadeRise 280ms ease both;
         }
 
-        #app > *:nth-child(2) { animation-delay: 40ms; }
-        #app > *:nth-child(3) { animation-delay: 80ms; }
-        #app > *:nth-child(4) { animation-delay: 120ms; }
+        #app > * {
+            animation-duration: 120ms;
+        }
+
+        #app > h1,
+        #app > h1 + .subtitle {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
 
         @keyframes fadeRise {
             from {
@@ -1633,17 +1831,30 @@
 
             .zinch-controls,
             .score-controls {
-                gap: 4px;
+                flex-wrap: nowrap;
+                gap: 6px;
+
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 2px;
             }
 
             h1 {
-                font-size: 1.45rem;
+                font-size: 1.65rem;
                 margin-bottom: 4px;
+            }
+
+            .game-header {
+                gap: 8px;
+            }
+
+            .game-header-turn {
+                font-size: 1.05rem;
             }
 
             .subtitle,
             .zinch-current {
-                font-size: 0.92rem;
+                font-size: 1.02rem;
             }
 
             button,
@@ -1658,11 +1869,22 @@
             }
 
             .zinch-action-btn {
-                width: 46px;
-                height: 34px;
-                min-width: 46px;
-                min-height: 34px;
-                font-size: 1rem;
+                width: 50px;
+                height: 40px;
+                min-width: 50px;
+                min-height: 40px;
+                font-size: 1.12rem;
+            }
+
+            .zinch-controls {
+                --zinch-btn-h: 40px;
+                --zinch-btn-gap: 5px;
+                --zinch-tall-btn-w: 68px;
+            }
+
+            .zinch-controls .zinch-plus-tall {
+                height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+                min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
             }
 
             .icon-btn {
@@ -1677,14 +1899,14 @@
             input[type="number"],
             .setup-name-input,
             .player-name-input {
-                min-height: 32px;
+                min-height: 40px;
                 padding: 5px 6px;
-                font-size: 0.88rem;
+                font-size: 1.08rem;
             }
 
             .score-input,
             .zinch-input {
-                width: 64px;
+                width: 86px;
             }
 
             .field,
@@ -1729,7 +1951,7 @@
 
             .score-player-card .player-name-input {
                 min-height: 34px;
-                font-size: 0.94rem;
+                font-size: 1rem;
             }
         }
 
@@ -1750,7 +1972,11 @@
             }
 
             h1 {
-                font-size: 1.25rem;
+                font-size: 1.48rem;
+            }
+
+            .game-header-turn {
+                font-size: 0.98rem;
             }
 
             .game-button {
@@ -1766,16 +1992,27 @@
             }
 
             .zinch-action-btn {
-                width: 40px;
-                height: 32px;
-                min-width: 40px;
-                min-height: 32px;
-                font-size: 0.92rem;
+                width: 46px;
+                height: 38px;
+                min-width: 46px;
+                min-height: 38px;
+                font-size: 1.02rem;
+            }
+
+            .zinch-controls {
+                --zinch-btn-h: 38px;
+                --zinch-btn-gap: 5px;
+                --zinch-tall-btn-w: 64px;
+            }
+
+            .zinch-controls .zinch-plus-tall {
+                height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+                min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
             }
 
             .score-input,
             .zinch-input {
-                width: 58px;
+                width: 78px;
             }
 
             .actions {
@@ -1790,6 +2027,85 @@
                 flex-basis: 58px;
                 min-width: 58px;
                 font-size: 1.05rem;
+            }
+
+            .zinch-controls {
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .game-header {
+                gap: 6px;
+                align-items: center;
+            }
+
+            .game-header-turn {
+                font-size: 0.92rem;
+                max-width: 50%;
+            }
+
+            .player-name-input {
+                font-size: 1.05rem;
+                min-height: 40px;
+            }
+
+            .zinch-total {
+                font-size: 1.55rem;
+            }
+
+            .zinch-input {
+                width: 92px;
+                min-width: 92px;
+                height: 44px;
+                min-height: 44px;
+                font-size: 1.08rem;
+                font-weight: 800;
+            }
+
+            .zinch-action-btn {
+                width: 52px;
+                height: 44px;
+                min-width: 52px;
+                min-height: 44px;
+                font-size: 1.14rem;
+            }
+
+            .zinch-controls {
+                --zinch-btn-h: 44px;
+                --zinch-btn-gap: 6px;
+                --zinch-tall-btn-w: 66px;
+            }
+
+            .zinch-controls .zinch-plus-tall {
+                height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+                min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
+            }
+
+            .zinch-controls {
+                gap: 6px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: thin;
+            }
+
+            .score-player-card .score-controls {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: thin;
+            }
+
+            .score-input {
+                width: 86px;
+                min-width: 86px;
+                min-height: 40px;
+                font-size: 1.02rem;
             }
         }
 
@@ -1930,6 +2246,92 @@
         .yams-empty {
             opacity: 0.35;
         }
+
+        /* Sand background color harmonization (non-button UI only) */
+        h1 {
+            color: #1a2f44;
+            text-shadow: 0 1px 0 rgba(255, 245, 224, 0.75);
+        }
+
+        .subtitle,
+        .dice-status,
+        .game-summary-name {
+            color: #334155;
+        }
+
+        .game-header-turn {
+            color: #1f3d5a;
+            text-shadow: 0 1px 0 rgba(255, 245, 224, 0.65);
+        }
+
+        .card,
+        .player-card,
+        .zinch-player-card,
+        .darts-picker-content,
+        .game-summary-card,
+        .yams-sheet th,
+        .yams-sheet td,
+        .die-btn,
+        .horloge-target-line,
+        .cricket-target-line,
+        .horloge-cell,
+        .cricket-cell,
+        .horloge-col-head,
+        .cricket-col-head,
+        .horloge-left-corner,
+        .horloge-left-target,
+        .cricket-left-corner,
+        .cricket-left-target {
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.94), rgba(252, 241, 223, 0.9));
+            border-color: rgba(118, 102, 79, 0.28);
+        }
+
+        .game-summary-card.current,
+        .yams-sheet th.current,
+        .yams-sheet td.current,
+        .player-card.current-player,
+        .zinch-player-card.current-player,
+        .zinch-player-card.active {
+            box-shadow: 0 0 0 2px rgba(49, 82, 128, 0.22);
+        }
+
+        .score-display,
+        .zinch-total,
+        .game-summary-score {
+            color: #1d4d72;
+        }
+
+        .player-name-input,
+        .score-input,
+        .zinch-input,
+        input[type="number"],
+        .setup-name-input {
+            background: rgba(255, 248, 236, 0.95);
+            border-color: rgba(120, 103, 82, 0.35);
+            color: #1c2833;
+        }
+
+        .zinch-line {
+            background: linear-gradient(135deg, rgba(255, 247, 233, 0.94), rgba(246, 231, 206, 0.9));
+            border-color: rgba(141, 122, 94, 0.32);
+            color: #213245;
+        }
+
+        .zinch-line.high-score {
+            background: linear-gradient(135deg, #2f5f8f, #1f4f7b);
+            border-color: #1f4f7b;
+        }
+
+        .zinch-winner {
+            color: #155f52;
+            background: rgba(236, 252, 244, 0.96);
+            border-color: rgba(106, 198, 167, 0.85);
+        }
+
+        .zinch-winner-finished {
+            background: rgba(255, 241, 238, 0.96);
+            border-color: rgba(238, 163, 152, 0.9);
+        }
     </style>
 </head>
 <body>
@@ -1939,6 +2341,7 @@
         const STORAGE_KEY = 'jeux-app-state-v1';
         const THEME_KEY = 'jeux-theme';
         const MAX_PLAYERS = 10;
+        const SAVE_THROTTLE_MS = 700;
         const DEFAULT_ZINCH_VALUE = 250;
         const GAME421_TOTAL_ROUNDS = 8;
         const YAMS_CATEGORIES = [
@@ -1981,6 +2384,7 @@
         };
 
         let appState = loadState();
+        let pendingSaveTimer = null;
 
         function loadState() {
             try {
@@ -2008,8 +2412,37 @@
             }
         }
 
+        function buildPersistedState() {
+            return {
+                ...appState,
+                // Undo stacks are session-only and can become very large.
+                undoStack: [],
+                horlogeUndoStack: []
+            };
+        }
+
+        function flushSaveState() {
+            if (pendingSaveTimer !== null) {
+                clearTimeout(pendingSaveTimer);
+                pendingSaveTimer = null;
+            }
+
+            const persistedState = {
+                ...buildPersistedState()
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(persistedState));
+        }
+
         function saveState() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+            if (pendingSaveTimer !== null) return;
+
+            pendingSaveTimer = window.setTimeout(() => {
+                pendingSaveTimer = null;
+                const persistedState = {
+                    ...buildPersistedState()
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(persistedState));
+            }, SAVE_THROTTLE_MS);
         }
 
         function applyTheme(theme) {
@@ -2042,7 +2475,6 @@
             if (appState.undoStack.length > 20) {
                 appState.undoStack.shift();
             }
-            saveState();
         }
 
         function undoLastAction() {
@@ -2082,7 +2514,7 @@
             document.getElementById('app').classList.remove('horloge-layout');
 
             document.getElementById('app').innerHTML = `
-                <h1>🎲 On veut jouer à quoi ?</h1>
+                <h1>🎲 A quoi on joue ?</h1>
                 <p class="subtitle">Sélectionne le mode de jeu à utiliser.</p>
 
                 <div class="card">
@@ -2397,7 +2829,6 @@
 
         function renderDartsBoard() {
             appState.screen = 'darts';
-            saveState();
 
             const variant = appState.dartsVariant;
             const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
@@ -2418,12 +2849,14 @@
             }
 
             document.getElementById('app').innerHTML = `
-                <h1>🎯 Fléchette ${variant === '501' ? '501' : variant === 'horloge' ? 'Horloge' : 'Cricket'}</h1>
-                <div class="zinch-current">Tour de ${currentPlayer ? currentPlayer.name : '...'}</div>
+                <div class="game-header">
+                    <h1>🎯 Fléchette ${variant === '501' ? '501' : variant === 'horloge' ? 'Horloge' : 'Cricket'}</h1>
+                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
+                </div>
                 ${contentMarkup}
                 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">On veut jouer à quoi ?</button>
+                    <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
                     <button class="btn-reset" onclick="resetDartsGame()">Réinitialiser la partie</button>
                 </div>
                 
@@ -2515,7 +2948,7 @@
 
                 <div class="horloge-matrix-wrap">
                     <div class="horloge-matrix-header">
-                        <div class="horloge-left-corner">#</div>
+                        <div class="horloge-left-corner">Total</div>
                         ${headerMarkup}
                     </div>
                     ${rowsMarkup}
@@ -2531,28 +2964,28 @@
             const cricketTargets = [20, 19, 18, 17, 16, 15, 'B'];
             const playerCount = appState.players.length || 1;
             const cricketColSize = playerCount <= 2
-                ? 72
+                ? 104
                 : playerCount === 3
-                    ? 62
+                    ? 92
                     : playerCount === 4
-                        ? 56
+                        ? 84
                         : playerCount === 5
-                            ? 50
+                            ? 76
                             : playerCount === 6
-                                ? 46
-                                : 42;
+                                ? 70
+                                : 64;
             const cricketLeftSize = playerCount <= 4 ? 36 : 32;
             const headerMarkup = appState.players.map((player, index) => {
                 const isCurrent = index === appState.currentPlayerIndex;
                 const displayScore = calcCricketScore(index);
-                return `<div class="cricket-col-head ${isCurrent ? 'current-player' : ''}" title="${player.name}"><div class="zinch-total">${displayScore}</div></div>`;
+                return `<div class="cricket-col-head ${isCurrent ? 'current-player' : ''}" title="${player.name}"><div class="cricket-player-name">${player.name}</div><div class="zinch-total">${displayScore}</div></div>`;
             }).join('');
 
             const rowsMarkup = cricketTargets.map(target => {
                 const cellsMarkup = appState.players.map((player, index) => {
                     const isCurrent = index === appState.currentPlayerIndex;
                     const closed = player.closed[target] || 0;
-                    let icon = '○';
+                    let icon = '';
                     if (closed === 1) icon = '/';
                     if (closed === 2) icon = 'X';
                     if (closed >= 3) icon = 'O';
@@ -2575,11 +3008,9 @@
                         isCurrent ? 'current-col' : ''
                     ].filter(Boolean).join(' ');
 
-                    if (canClick) {
-                        return `<div class="${classes}"><button class="cricket-icon-btn ${closed > 0 ? 'hit' : ''} ${isCompleted ? 'done' : ''}" onclick="addCricketHitDirect(${targetArg})">${icon}</button></div>`;
-                    }
-
-                    return `<div class="${classes}"><span class="cricket-cell-icon ${closed > 0 ? 'hit' : ''} ${isCompleted ? 'done' : ''}">${icon}</span></div>`;
+                    const interactionClass = canClick ? ' clickable' : '';
+                    const clickHandler = canClick ? ` onclick="addCricketHitDirect(${targetArg})"` : '';
+                    return `<div class="${classes}${interactionClass}"${clickHandler}><span class="cricket-cell-icon ${closed > 0 ? 'hit' : ''} ${isCompleted ? 'done' : ''}">${icon}</span></div>`;
                 }).join('');
 
                 return `
@@ -2600,7 +3031,7 @@
 
                 <div class="cricket-matrix-wrap" style="--cricket-col-size:${cricketColSize}px; --cricket-left-size:${cricketLeftSize}px;">
                     <div class="cricket-matrix-header">
-                        <div class="cricket-left-corner">#</div>
+                        <div class="cricket-left-corner">Total</div>
                         ${headerMarkup}
                     </div>
                     ${rowsMarkup}
@@ -3194,7 +3625,8 @@
                 id: index + 1,
                 name: playerNames[index] || `Joueur ${index + 1}`,
                 score: 0,
-                entries: []
+                entries: [],
+                zinchConsecutiveCount: 0
             }));
             saveState();
             renderZinchBoard();
@@ -3271,7 +3703,7 @@
                 </div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">On veut jouer à quoi ?</button>
+                    <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
                     <button class="btn-reset" onclick="resetScores()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -3279,17 +3711,18 @@
 
         function renderZinchBoard() {
             appState.screen = 'zinch';
-            saveState();
 
             const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
-            const defaultZinchValue = DEFAULT_ZINCH_VALUE;
+            const defaultZinchValue = getDefaultZinchTurnValue();
             appState.nextZinchValue = defaultZinchValue;
             const winnerPlayer = appState.players.find(player => player.id === appState.winnerId);
             const playersMarkup = appState.players.map(player => {
                 const isCurrent = player.id === currentPlayer?.id;
-                const historyEntries = [...player.entries];
+                const historyEntries = player.entries.length > 120
+                    ? player.entries.slice(-120)
+                    : [...player.entries];
                 const zinchStreak = getConsecutiveZinchCount(player);
-                const isRed = zinchStreak > 0 && zinchStreak % 3 === 2;
+                const isRed = zinchStreak === 2;
                 const linesMarkup = historyEntries.map(entry => `
                     <span class="zinch-line ${entry.type === 'zinch' ? 'zinch' : ''} ${entry.type === 'score' && entry.value >= 1000 ? 'high-score' : ''}">${entry.type === 'zinch' ? 'Z' : entry.value}</span>
                 `).join('');
@@ -3306,18 +3739,23 @@
             }).join('');
 
             document.getElementById('app').innerHTML = `
-                <h1>🎲 Zinch</h1>
-                <div class="zinch-current">Tour de ${currentPlayer ? currentPlayer.name : '...'}</div>
+                <div class="game-header">
+                    <h1>🎲 Zinch</h1>
+                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
+                </div>
                 ${winnerPlayer ? `<div class="zinch-winner">🏆 Gagnant : ${winnerPlayer.name}</div>` : ''}
                 ${appState.gameFinished ? `<div class="zinch-winner zinch-winner-finished">Partie terminée après un Zinch.</div>` : ''}
 
                 <div class="card">
                     <div class="zinch-controls">
-                        <input id="zinch-score-input" class="zinch-input" type="number" min="50" max="10000" step="50" value="${defaultZinchValue}" placeholder="${DEFAULT_ZINCH_VALUE}" onfocus="selectInputText(this)">
-                        <button class="zinch-action-btn btn-arrow-up" onclick="addZinchPlus50()">⬆</button>
-                        <button class="zinch-action-btn btn-plus" onclick="addZinchScore()">+</button>
+                        <input id="zinch-score-input" class="zinch-input" type="number" min="50" max="10000" step="50" value="${defaultZinchValue}" placeholder="${defaultZinchValue}" onfocus="selectInputText(this)">
+                        <div class="zinch-arrow-stack">
+                            <button class="zinch-action-btn btn-arrow-up" onclick="addZinchPlus50()">⬆</button>
+                            <button class="zinch-action-btn btn-arrow-down" onclick="removeZinchMinus50()">⬇</button>
+                        </div>
+                        <button class="zinch-action-btn btn-plus zinch-plus-tall" onclick="addZinchScore()">+</button>
                         <button class="zinch-action-btn btn-minus" onclick="addZinchZ()">Z</button>
-                        <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastAction()">✕</button>
+                        <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastAction()">←</button>
                     </div>
                 </div>
 
@@ -3326,7 +3764,7 @@
                 </div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">On veut jouer à quoi ?</button>
+                    <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
                     <button class="btn-reset" onclick="resetZinchGame()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -3371,8 +3809,10 @@
             const combo = get421Evaluation(appState.game421Dice || [1, 1, 1]);
 
             document.getElementById('app').innerHTML = `
-                <h1>🎲 421</h1>
-                <div class="zinch-current">Manche ${appState.game421Round}/${GAME421_TOTAL_ROUNDS} · Tour de ${currentPlayer ? currentPlayer.name : '...'}</div>
+                <div class="game-header">
+                    <h1>🎲 421</h1>
+                    <div class="game-header-turn">Manche ${appState.game421Round}/${GAME421_TOTAL_ROUNDS} · Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
+                </div>
 
                 <div class="card">
                     <div class="dice-toolbar">
@@ -3392,7 +3832,7 @@
                 <div class="game-summary-grid">${summaryMarkup}</div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">On veut jouer à quoi ?</button>
+                    <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
                     <button class="btn-reset" onclick="reset421Game()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -3536,8 +3976,10 @@
             }).join('');
 
             document.getElementById('app').innerHTML = `
-                <h1>🎲 Yams</h1>
-                <div class="zinch-current">Tour de ${currentPlayer ? currentPlayer.name : '...'} · ${appState.yamsRollsLeft} lancer(s)</div>
+                <div class="game-header">
+                    <h1>🎲 Yams</h1>
+                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span> · ${appState.yamsRollsLeft} lancer(s)</div>
+                </div>
 
                 <div class="card">
                     <div class="dice-toolbar">
@@ -3571,7 +4013,7 @@
                 <div class="game-summary-grid">${summaryMarkup}</div>
 
                 <div class="actions" style="margin-top: 6px;">
-                    <button class="btn-secondary" onclick="renderHome()">On veut jouer à quoi ?</button>
+                    <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
                     <button class="btn-reset" onclick="resetYamsGame()">Réinitialiser la partie</button>
                 </div>
             `;
@@ -3723,12 +4165,20 @@
             const input = document.getElementById('zinch-score-input');
             if (!input) return;
 
-            const currentValue = parseInt(input.value, 10) || DEFAULT_ZINCH_VALUE;
+            const currentValue = parseInt(input.value, 10) || getDefaultZinchTurnValue();
             const newValue = currentValue + 50;
             
             if (newValue <= 10000) {
                 input.value = newValue;
             }
+        }
+
+        function removeZinchMinus50() {
+            const input = document.getElementById('zinch-score-input');
+            if (!input) return;
+
+            const currentValue = parseInt(input.value, 10) || getDefaultZinchTurnValue();
+            input.value = Math.max(50, currentValue - 50);
         }
 
         function addZinchScore() {
@@ -3737,13 +4187,11 @@
             const currentPlayer = appState.players[appState.currentPlayerIndex];
             if (!currentPlayer) return;
 
-            saveUndoSnapshot();
-
             const input = document.getElementById('zinch-score-input');
             const rawValue = input.value.trim();
             const parsedValue = parseInt(rawValue, 10);
             const value = Number.isNaN(parsedValue) || rawValue === ''
-                ? DEFAULT_ZINCH_VALUE
+                ? getDefaultZinchTurnValue()
                 : parsedValue;
             if (value < 50 || value > 10000 || value % 50 !== 0) {
                 alert('Le score doit être un multiple de 50 compris entre 50 et 10000.');
@@ -3765,8 +4213,16 @@
                     }
                 }
             }
+
+            saveUndoSnapshot();
+
             if (previousPlayer && previousPlayer.id !== currentPlayer.id && value < requiredMinimum) {
                 currentPlayer.entries.push({ type: 'zinch' });
+                currentPlayer.zinchConsecutiveCount = (currentPlayer.zinchConsecutiveCount || 0) + 1;
+                if (currentPlayer.zinchConsecutiveCount === 3) {
+                    currentPlayer.score -= 1000;
+                    currentPlayer.zinchConsecutiveCount = 0;
+                }
                 appState.nextZinchValue = DEFAULT_ZINCH_VALUE;
                 saveState();
                 advanceToNextPlayer();
@@ -3776,6 +4232,7 @@
 
             currentPlayer.entries.push({ type: 'score', value });
             currentPlayer.score += value;
+            currentPlayer.zinchConsecutiveCount = 0;
             if (!appState.winnerId && currentPlayer.score >= 10000) {
                 appState.winnerId = currentPlayer.id;
             }
@@ -3794,9 +4251,10 @@
             saveUndoSnapshot();
 
             currentPlayer.entries.push({ type: 'zinch' });
-            const streak = getConsecutiveZinchCount(currentPlayer);
-            if (streak >= 3) {
+            currentPlayer.zinchConsecutiveCount = (currentPlayer.zinchConsecutiveCount || 0) + 1;
+            if (currentPlayer.zinchConsecutiveCount === 3) {
                 currentPlayer.score -= 1000;
+                currentPlayer.zinchConsecutiveCount = 0;
             }
             if (appState.winnerId) {
                 appState.gameFinished = true;
@@ -3812,7 +4270,38 @@
             inputElement.select();
         }
 
+        function getDefaultZinchTurnValue() {
+            if (!Array.isArray(appState.players) || appState.players.length === 0) {
+                return DEFAULT_ZINCH_VALUE;
+            }
+
+            const currentIndex = appState.currentPlayerIndex || 0;
+            const previousIndex = (currentIndex - 1 + appState.players.length) % appState.players.length;
+            const previousPlayer = appState.players[previousIndex];
+
+            if (!previousPlayer || !Array.isArray(previousPlayer.entries) || previousPlayer.entries.length === 0) {
+                return DEFAULT_ZINCH_VALUE;
+            }
+
+            for (let i = previousPlayer.entries.length - 1; i >= 0; i--) {
+                const entry = previousPlayer.entries[i];
+                if (entry.type === 'zinch') {
+                    return DEFAULT_ZINCH_VALUE;
+                }
+                if (entry.type === 'score' && typeof entry.value === 'number') {
+                    return entry.value;
+                }
+            }
+
+            return DEFAULT_ZINCH_VALUE;
+        }
+
         function getConsecutiveZinchCount(player) {
+            if (!player) return 0;
+            if (typeof player.zinchConsecutiveCount === 'number') {
+                return player.zinchConsecutiveCount;
+            }
+
             let streak = 0;
             for (let i = player.entries.length - 1; i >= 0; i--) {
                 if (player.entries[i].type === 'zinch') {
@@ -3823,7 +4312,8 @@
                     break;
                 }
             }
-            return streak;
+            player.zinchConsecutiveCount = streak % 3;
+            return player.zinchConsecutiveCount;
         }
 
         function advanceToNextPlayer() {
@@ -3845,7 +4335,7 @@
         function resetZinchGame() {
             if (!confirm('Recommencer cette partie ?')) return;
 
-            appState.players = appState.players.map(player => ({ ...player, score: 0, entries: [] }));
+            appState.players = appState.players.map(player => ({ ...player, score: 0, entries: [], zinchConsecutiveCount: 0 }));
             appState.currentPlayerIndex = 0;
             appState.nextZinchValue = DEFAULT_ZINCH_VALUE;
             appState.winnerId = null;
@@ -3863,6 +4353,20 @@
                 navigator.serviceWorker.register('sw.js').catch(() => {});
             }
         }
+
+        window.addEventListener('beforeunload', () => {
+            flushSaveState();
+        });
+
+        window.addEventListener('pagehide', () => {
+            flushSaveState();
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                flushSaveState();
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
