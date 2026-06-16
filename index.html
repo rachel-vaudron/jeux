@@ -148,8 +148,19 @@
             text-overflow: ellipsis;
         }
 
+        .game-header-turn .turn-label {
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 2px 0 4px;
+            color: #1a2f44;
+            text-shadow: 0 1px 0 rgba(255, 245, 224, 0.65);
+        }
+
         .game-header-turn .current-player-name {
             font-weight: 900;
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            line-height: 1;
         }
 
         .subtitle {
@@ -251,8 +262,9 @@
 
         .player-card.current-player {
             border-color: var(--primary);
-            background: linear-gradient(145deg, rgba(91, 124, 255, 0.08), rgba(91, 124, 255, 0.04));
-            box-shadow: 0 0 0 2px var(--primary), 0 10px 24px rgba(91, 124, 255, 0.16);
+            border-width: 3px;
+            background: linear-gradient(145deg, var(--surface), var(--surface-soft));
+            box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.24), 0 10px 24px rgba(91, 124, 255, 0.16);
         }
 
         .player-name {
@@ -478,18 +490,38 @@
 
         .zinch-player-card.active {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(91, 124, 255, 0.16);
+            border-width: 3px;
+            box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.2);
         }
 
         .zinch-player-card.current-player {
             border-color: var(--primary);
-            background: linear-gradient(145deg, rgba(91, 124, 255, 0.08), rgba(91, 124, 255, 0.04));
-            box-shadow: 0 0 0 2px var(--primary), 0 10px 24px rgba(91, 124, 255, 0.16);
+            border-width: 3px;
+            background: linear-gradient(145deg, var(--surface), var(--surface-soft));
+            box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.24), 0 10px 24px rgba(91, 124, 255, 0.16);
         }
 
         .zinch-player-card.red {
-            border-color: var(--danger);
+            border-width: 3px;
+            border-color: #dc2626;
             background: linear-gradient(145deg, #fff8f8, #fff2f2);
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+        }
+
+        .zinch-player-card.red .player-name-input,
+        .zinch-player-card.red .zinch-total {
+            color: #b91c1c;
+            font-weight: 900;
+        }
+
+        .zinch-player-card.red .player-name-input {
+            border-color: rgba(220, 38, 38, 0.45);
+            background: #fff5f5;
+        }
+
+        .zinch-player-card.active.red {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.26);
         }
 
         .zinch-player-top {
@@ -769,6 +801,52 @@
             gap: 2px;
         }
 
+        .horloge-players-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .horloge-player-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) max-content;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.94), rgba(252, 241, 223, 0.9));
+        }
+
+        .horloge-player-row .horloge-player-name {
+            font-size: 1.02rem;
+            font-weight: 900;
+        }
+
+        .horloge-player-row .horloge-player-score {
+            display: none;
+        }
+
+        .horloge-player-row.current-player {
+            border-width: 3px;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.2);
+        }
+
+        .horloge-score-pill {
+            min-width: 74px;
+        }
+
+        .horloge-player-row.current-player .horloge-score-pill {
+            border-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .horloge-player-row.current-player .horloge-score-pill:hover {
+            transform: translateY(-1px);
+        }
+
         .horloge-targets-vertical {
             display: flex;
             flex-direction: column;
@@ -791,6 +869,17 @@
 
         .horloge-players-grid.horizontal-players {
             display: flex;
+        }
+
+        @media (max-width: 640px) {
+            .horloge-player-row {
+                gap: 8px;
+                padding: 7px 8px;
+            }
+
+            .horloge-score-pill {
+                min-width: 68px;
+            }
         }
 
         .horloge-players-grid .zinch-player-card {
@@ -904,36 +993,51 @@
             gap: 8px;
         }
 
-        .cricket-controls .zinch-action-btn {
+        .cricket-controls .zinch-action-btn,
+        .horloge-controls .zinch-action-btn {
             flex: 1 1 0;
             width: auto;
             font-weight: 900;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             line-height: 1;
         }
 
-        .cricket-controls .cricket-next-btn {
+        .cricket-controls .cricket-next-btn,
+        .horloge-controls .cricket-next-btn {
             background: linear-gradient(135deg, #34d4b1, var(--accent));
             color: white;
             font-weight: 900;
             height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
             min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
-            font-size: 1.9rem;
+            font-size: 2.1rem;
             line-height: 1;
             flex: 1 1 0;
             width: 0;
             min-width: 0;
         }
 
-        .cricket-controls .cricket-undo-btn {
+        .cricket-controls .cricket-undo-btn,
+        .horloge-controls .cricket-undo-btn {
             font-weight: 900;
             height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
             min-height: calc(var(--zinch-btn-h) * 2 + var(--zinch-btn-gap));
-            font-size: 1.55rem;
+            font-size: 1.8rem;
             line-height: 1;
             flex: 1 1 0;
             width: 0;
             min-width: 0;
+        }
+
+        .horloge-controls .cricket-undo-btn {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+            color: white;
+            box-shadow: 0 8px 16px rgba(107, 114, 128, 0.2);
+        }
+
+        .darts501-controls .darts501-dart-btn {
+            background: linear-gradient(135deg, #60a5fa, #2563eb);
+            color: white;
+            font-weight: 700;
         }
 
         .horloge-target-num {
@@ -954,29 +1058,6 @@
             min-width: 20px;
             text-align: center;
         }
-
-        .horloge-target-line.completed .horloge-target-num,
-        .horloge-target-line.completed .horloge-target-icon {
-            color: white;
-        }
-
-        .horloge-matrix-wrap {
-            overflow-x: auto;
-            padding-bottom: 4px;
-        }
-
-        .horloge-matrix-header,
-        .horloge-matrix-row {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            width: max-content;
-        }
-
-        .horloge-matrix-row {
-            margin-bottom: 6px;
-        }
-
         .horloge-matrix-header {
             margin-bottom: 4px;
             position: sticky;
@@ -1117,11 +1198,11 @@
         }
 
         .cricket-matrix-row {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .cricket-matrix-header {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .cricket-left-corner,
@@ -1131,7 +1212,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
+            font-weight: 900;
             border-radius: 8px;
             border: 1px solid var(--border);
             background: color-mix(in srgb, var(--surface-soft) 84%, white 16%);
@@ -1141,21 +1222,21 @@
 
         .cricket-left-corner {
             min-height: 38px;
-            font-size: 0.78rem;
+            font-size: 0.92rem;
             padding: 0 6px;
             width: 78px;
             min-width: 78px;
         }
 
         .cricket-left-target {
-            min-height: 38px;
-            font-size: 0.76rem;
+            min-height: 44px;
+            font-size: 0.98rem;
         }
 
         .cricket-col-head {
             width: var(--cricket-col-size, 44px);
             min-width: var(--cricket-col-size, 44px);
-            min-height: 38px;
+            min-height: 44px;
             border: 1px solid var(--border);
             border-radius: 10px;
             background: linear-gradient(145deg, var(--surface), var(--surface-soft));
@@ -1169,13 +1250,21 @@
 
         .cricket-col-head.current-player {
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(91, 124, 255, 0.2);
+            border-width: 3px;
+            box-shadow: 0 0 0 5px rgba(91, 124, 255, 0.3), inset 0 0 0 999px rgba(91, 124, 255, 0.06);
+            background: linear-gradient(145deg, rgba(91, 124, 255, 0.24), rgba(252, 241, 223, 0.96));
+        }
+
+        .cricket-col-head.current-player .cricket-player-name,
+        .cricket-col-head.current-player .zinch-total {
+            font-weight: 900;
         }
 
         .cricket-col-head .zinch-total {
-            font-size: 1rem;
+            font-size: 1.14rem;
             min-width: 0;
             line-height: 1;
+            font-weight: 900;
         }
 
         .cricket-player-name {
@@ -1184,15 +1273,15 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: 800;
+            font-size: 1rem;
+            font-weight: 900;
             line-height: 1;
         }
 
         .cricket-cell {
             width: var(--cricket-col-size, 44px);
             min-width: var(--cricket-col-size, 44px);
-            min-height: 38px;
+            min-height: 44px;
             border: 1px solid var(--border);
             border-radius: 8px;
             display: flex;
@@ -1223,7 +1312,18 @@
         }
 
         .cricket-cell.current-col {
-            border-color: color-mix(in srgb, var(--primary) 60%, var(--border) 40%);
+            border-color: var(--primary);
+            border-width: 2px;
+            box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.32), inset 0 0 0 999px rgba(91, 124, 255, 0.08);
+            background: linear-gradient(135deg, rgba(91, 124, 255, 0.22), rgba(255, 250, 240, 0.96));
+        }
+
+        .cricket-cell.current-col.completed {
+            background: linear-gradient(135deg, rgba(91, 124, 255, 0.3), rgba(52, 212, 177, 0.9));
+        }
+
+        .cricket-cell.current-col.scoring {
+            background: linear-gradient(135deg, rgba(91, 124, 255, 0.32), rgba(52, 212, 177, 0.94));
         }
 
         .cricket-cell.clickable {
@@ -1236,7 +1336,7 @@
         }
 
         .cricket-cell-icon {
-            font-size: 0.8rem;
+            font-size: 1.45rem;
             font-weight: 900;
             color: var(--muted);
             line-height: 1;
@@ -1249,22 +1349,45 @@
         }
 
         .cricket-cell-icon.done,
-        .cricket-cell.completed .cricket-cell-icon,
+        .cricket-cell.completed .cricket-cell-icon {
+            color: #111827;
+        }
+
         .cricket-cell.scoring .cricket-cell-icon {
             color: white;
         }
 
         @media (max-width: 640px) {
+            .cricket-matrix-row {
+                margin-bottom: 12px;
+            }
+
             .cricket-left-corner,
             .cricket-left-target {
-                width: max(28px, calc(var(--cricket-left-size, 34px) - 4px));
-                min-width: max(28px, calc(var(--cricket-left-size, 34px) - 4px));
+                width: max(34px, calc(var(--cricket-left-size, 34px) - 2px));
+                min-width: max(34px, calc(var(--cricket-left-size, 34px) - 2px));
             }
 
             .cricket-col-head,
             .cricket-cell {
-                width: max(34px, calc(var(--cricket-col-size, 44px) - 4px));
-                min-width: max(34px, calc(var(--cricket-col-size, 44px) - 4px));
+                width: max(38px, calc(var(--cricket-col-size, 44px) - 2px));
+                min-width: max(38px, calc(var(--cricket-col-size, 44px) - 2px));
+            }
+
+            .cricket-col-head .zinch-total,
+            .cricket-player-name,
+            .cricket-cell-icon,
+            .cricket-left-target,
+            .cricket-left-corner {
+                font-weight: 900;
+            }
+
+            .cricket-cell.current-col {
+                box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.28), inset 0 0 0 1px rgba(91, 124, 255, 0.22);
+            }
+
+            .cricket-cell-icon {
+                font-size: 1.65rem;
             }
         }
 
@@ -2175,7 +2298,15 @@
 
         .game-summary-card.current {
             border-color: var(--primary);
+            border-width: 3px;
             box-shadow: 0 0 0 2px rgba(31, 91, 216, 0.2);
+        }
+
+        .game-summary-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
         }
 
         .game-summary-name {
@@ -2191,6 +2322,12 @@
             font-weight: 800;
             color: var(--primary);
             line-height: 1.1;
+        }
+
+        .game-summary-card.current .game-summary-name,
+        .game-summary-card.current .game-summary-score,
+        .game-summary-card.current small {
+            font-weight: 900;
         }
 
         .yams-sheet-wrap {
@@ -2292,7 +2429,7 @@
         .player-card.current-player,
         .zinch-player-card.current-player,
         .zinch-player-card.active {
-            box-shadow: 0 0 0 2px rgba(49, 82, 128, 0.22);
+            box-shadow: 0 0 0 3px rgba(49, 82, 128, 0.28);
         }
 
         .score-display,
@@ -2371,7 +2508,7 @@
             gameFinished: false,
             dartsDoubleOut: true,
             dartsVariant: null,
-            horlogeMultiplicity: 1,
+            horlogeMultiplicity: 3,
             horlogeMode: 'ordered',
             horlogeUndoStack: [],
             game421Round: 1,
@@ -2563,6 +2700,7 @@
         function showZinchSetup() {
             appState.screen = 'player-count';
             appState.game = 'zinch';
+            appState.playerCount = 2;
             saveState();
             renderPlayerSetupScreen('🎲 Nombre de joueurs', 'Choisis le nombre de participants pour le jeu Zinch.', 'handleZinchPlayerCountSubmit');
         }
@@ -2571,7 +2709,40 @@
             appState.screen = 'player-count';
             appState.game = '421';
             saveState();
-            renderPlayerSetupScreen('🎲 Nombre de joueurs', 'Choisis les joueurs pour le 421.', 'handle421PlayerCountSubmit');
+            const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+            const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
+                const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
+                return `
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="player-name-${index + 1}">Joueur ${index + 1}</label>
+                            <input id="player-name-${index + 1}" class="setup-name-input is-muted" type="text" value="${defaultValue}" placeholder="Joueur ${index + 1}" autocomplete="off" onfocus="this.classList.remove('is-muted'); if (this.value === '${defaultValue}') this.value = ''" onblur="if (!this.value.trim()) { this.value = '${defaultValue}'; this.classList.add('is-muted'); } else { this.classList.remove('is-muted'); }">
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('app').innerHTML = `
+                <h1>🎲 421</h1>
+                <p class="subtitle">Choisis les joueurs pour la partie.</p>
+
+                <div class="card">
+                    <form id="game421-setup-form" onsubmit="return handle421PlayerCountSubmit(event)">
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="playerCount">Nombre de joueurs</label>
+                                <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
+                            </div>
+                        </div>
+                        <div id="player-name-fields">${nameInputsMarkup}</div>
+                        <div class="actions" style="margin-top: 14px;">
+                            <button class="btn-reset" type="submit">Commencer</button>
+                            <button class="btn-secondary" type="button" onclick="showDartsVariantMenu()">Retour</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            saveState();
         }
 
         function showYamsSetup() {
@@ -2639,7 +2810,7 @@
                                 </div>
                             </div>
                             <div id="player-name-fields">${nameInputsMarkup}</div>
-                            
+
                             <div style="margin-top: 16px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
                                 <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer;">
                                     <input type="checkbox" id="darts-double-out" checked>
@@ -2683,31 +2854,17 @@
                                 </div>
                             </div>
                             <div id="player-name-fields">${nameInputsMarkup}</div>
-                            
-                            <div style="margin-top: 16px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Combien de fois pour chaque numéro ?</label>
-                                <div style="display: flex; gap: 8px;">
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
-                                        <input type="radio" name="horloge-multiplicity" value="1" checked>
-                                        <span>1 fois</span>
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
-                                        <input type="radio" name="horloge-multiplicity" value="3">
-                                        <span>3 fois</span>
-                                    </label>
-                                </div>
-                            </div>
 
                             <div style="margin-top: 12px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Mode Horloge</label>
-                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; min-width: 170px;">
-                                        <input type="radio" name="horloge-mode" value="ordered" checked>
-                                        <span>Une par une</span>
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Nombre de fléchettes par numéro</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
+                                        <input type="radio" name="horloge-multiplicity" value="1">
+                                        <span>1 fléchette</span>
                                     </label>
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; min-width: 170px;">
-                                        <input type="radio" name="horloge-mode" value="unordered">
-                                        <span>Dans le désordre</span>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1;">
+                                        <input type="radio" name="horloge-multiplicity" value="3" checked>
+                                        <span>3 fléchettes</span>
                                     </label>
                                 </div>
                             </div>
@@ -2730,17 +2887,15 @@
             event.preventDefault();
             const input = document.getElementById('playerCount');
             const count = parseInt(input.value, 10);
-            const multiplicity = parseInt(document.querySelector('input[name="horloge-multiplicity"]:checked').value, 10);
-            const modeInput = document.querySelector('input[name="horloge-mode"]:checked');
-            const mode = modeInput ? modeInput.value : 'ordered';
+            const multiplicityInput = document.querySelector('input[name="horloge-multiplicity"]:checked');
+            const multiplicity = multiplicityInput ? parseInt(multiplicityInput.value, 10) : 3;
 
             if (Number.isNaN(count) || count < 1 || count > MAX_PLAYERS) {
                 alert(`Le nombre de joueurs doit être compris entre 1 et ${MAX_PLAYERS}.`);
                 return false;
             }
 
-            appState.horlogeMultiplicity = multiplicity;
-            appState.horlogeMode = mode;
+            appState.horlogeMultiplicity = multiplicity === 1 ? 1 : 3;
             startDartsGame(count, collectPlayerNames(count), 'horloge');
             return false;
         }
@@ -2797,6 +2952,8 @@
                     name: playerNames[index] || `Joueur ${index + 1}`,
                     currentTarget: 1,
                     horlogeHits: {},
+                    horlogeLastTargetDisplay: 1,
+                    horlogeLastSequence: '-',
                     score: 0,
                     history: []
                 }));
@@ -2850,7 +3007,7 @@
 
             document.getElementById('app').innerHTML = `
                 <div class="game-header">
-                    <h1>🎯 Fléchette ${variant === '501' ? '501' : variant === 'horloge' ? 'Horloge' : 'Cricket'}</h1>
+                    <h1>🎯 ${variant === '501' ? '501' : variant === 'horloge' ? 'Horloge' : 'Cricket'}</h1>
                     <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
                 </div>
                 ${contentMarkup}
@@ -2877,9 +3034,9 @@
 
             return `
                 <div class="card">
-                    <div class="zinch-controls">
-                        <button class="zinch-action-btn btn-plus" onclick="openDartsPicker('501')">Dart</button>
-                        <button class="zinch-action-btn btn-minus" onclick="renderHome()">⌂</button>
+                    <div class="zinch-controls cricket-controls darts501-controls">
+                        <button class="zinch-action-btn cricket-next-btn" onclick="nextDarts501Player()">→</button>
+                        <button class="zinch-action-btn cricket-next-btn darts501-dart-btn" onclick="openDartsPicker('501')">Dart</button>
                     </div>
                 </div>
                 
@@ -2890,49 +3047,23 @@
         }
 
         function renderDartsHorlogeBoard() {
-            const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
-            const horlogeMode = appState.horlogeMode || 'ordered';
-            const multiplicity = appState.horlogeMultiplicity || 1;
+            const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
+            const multiplicity = appState.horlogeMultiplicity || 3;
 
-            const headerMarkup = appState.players.map((player, index) => `
-                <div class="horloge-col-head ${index === appState.currentPlayerIndex ? 'current-player' : ''}">
-                    <div class="horloge-player-name">${player.name}</div>
-                    <div class="zinch-total">${player.score}</div>
-                </div>
-            `).join('');
-
-            const rowsMarkup = horlogeTargets.map(target => {
-                const cellsMarkup = appState.players.map((player, index) => {
-                    const hits = player.horlogeHits[target] || 0;
-                    let display = '-';
-                    if (hits === 1) display = '/';
-                    if (hits === 2) display = 'X';
-                    if (hits >= 3) display = 'O';
-
-                    const isCompleted = hits >= multiplicity;
-                    const isCurrentPlayer = index === appState.currentPlayerIndex;
-                    const currentTargetDisplay = player.currentTarget === 21 ? 25 : player.currentTarget === 22 ? 50 : player.currentTarget;
-                    const isCurrentTarget = currentTargetDisplay === target;
-                    const canClick = isCurrentPlayer && !isCompleted && (horlogeMode === 'unordered' || isCurrentTarget);
-
-                    const classes = [
-                        'horloge-cell',
-                        isCompleted ? 'completed' : '',
-                        horlogeMode === 'ordered' && isCurrentTarget ? 'next' : '',
-                        isCurrentPlayer ? 'current-col' : ''
-                    ].filter(Boolean).join(' ');
-
-                    if (canClick) {
-                        return `<div class="${classes}"><button class="horloge-icon-btn current" onclick="addHorlogeHitDirect(${target})">${display}</button></div>`;
-                    }
-
-                    return `<div class="${classes}"><span class="horloge-cell-icon">${display}</span></div>`;
-                }).join('');
+            const rowsMarkup = appState.players.map((player, index) => {
+                const isCurrent = index === appState.currentPlayerIndex;
+                const currentTargetDisplay = player.currentTarget === 21 ? 25 : player.currentTarget === 22 ? 50 : player.currentTarget;
+                const currentHits = player.horlogeHits[currentTargetDisplay] || 0;
+                const pillValue = currentTargetDisplay;
+                const pillSequence = multiplicity === 1 ? '' : getHorlogeSequence(currentHits);
 
                 return `
-                    <div class="horloge-matrix-row">
-                        <div class="horloge-left-target">${target}</div>
-                        ${cellsMarkup}
+                    <div class="horloge-player-row ${isCurrent ? 'current-player' : ''}">
+                        <div class="horloge-player-name">${player.name}</div>
+                        <button class="cricket-target-line horloge-score-pill ${isCurrent ? 'scoring' : ''}" ${isCurrent ? `onclick="addHorlogeHitDirect(${currentTargetDisplay})"` : 'disabled'}>
+                            <span class="cricket-target-num">${pillValue}</span>
+                            ${pillSequence ? `<span class="cricket-target-icon">${pillSequence}</span>` : ''}
+                        </button>
                     </div>
                 `;
             }).join('');
@@ -2940,17 +3071,12 @@
             return `
                 <div class="card">
                     <div class="zinch-controls horloge-controls">
-                        <button class="zinch-action-btn horloge-next-btn" onclick="nextDartsHorlogePlayer()">→</button>
-                        <button class="zinch-action-btn btn-minus horloge-undo-btn" onclick="undoLastHorlogeAction()">←</button>
-                        <button class="zinch-action-btn horloge-menu-btn" onclick="renderHome()">⌂</button>
+                        <button class="zinch-action-btn cricket-next-btn" onclick="nextDartsHorlogePlayer()">→</button>
+                        <button class="zinch-action-btn cricket-undo-btn" onclick="undoLastHorlogeAction()">←</button>
                     </div>
                 </div>
 
-                <div class="horloge-matrix-wrap">
-                    <div class="horloge-matrix-header">
-                        <div class="horloge-left-corner">Total</div>
-                        ${headerMarkup}
-                    </div>
+                <div class="horloge-players-list">
                     ${rowsMarkup}
                 </div>
             `;
@@ -3057,14 +3183,19 @@
             renderDartsBoard();
         }
 
+        function nextDarts501Player() {
+            appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
+            saveState();
+            renderDartsBoard();
+        }
+
         function addHorlogeHitDirect(target) {
             const currentPlayer = appState.players[appState.currentPlayerIndex];
-            const multiplicity = appState.horlogeMultiplicity || 1;
-            const horlogeMode = appState.horlogeMode || 'ordered';
+            const multiplicity = appState.horlogeMultiplicity || 3;
             const currentTargetDisplay = currentPlayer.currentTarget === 21 ? 25 : currentPlayer.currentTarget === 22 ? 50 : currentPlayer.currentTarget;
 
             // Respecter l'ordre Horloge
-            if (horlogeMode === 'ordered' && target !== currentTargetDisplay) {
+            if (target !== currentTargetDisplay) {
                 return;
             }
 
@@ -3079,7 +3210,9 @@
                 target,
                 oldHits,
                 oldScore: currentPlayer.score,
-                oldCurrentTarget: currentPlayer.currentTarget
+                oldCurrentTarget: currentPlayer.currentTarget,
+                oldLastTargetDisplay: currentPlayer.horlogeLastTargetDisplay,
+                oldLastSequence: currentPlayer.horlogeLastSequence
             });
             if (appState.horlogeUndoStack.length > 100) {
                 appState.horlogeUndoStack.shift();
@@ -3088,8 +3221,10 @@
             const newHits = oldHits + 1;
             currentPlayer.horlogeHits[target] = newHits;
             currentPlayer.score += target;
+            currentPlayer.horlogeLastTargetDisplay = currentTargetDisplay;
+            currentPlayer.horlogeLastSequence = multiplicity === 1 ? '-' : getHorlogeSequence(newHits);
 
-            if (horlogeMode === 'ordered' && newHits >= multiplicity) {
+            if (newHits >= multiplicity) {
                 const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
                 const currentIndex = horlogeTargets.indexOf(currentTargetDisplay);
                 if (currentIndex === horlogeTargets.length - 1) {
@@ -3100,15 +3235,6 @@
                 }
                 const nextDisplay = horlogeTargets[currentIndex + 1];
                 currentPlayer.currentTarget = nextDisplay === 25 ? 21 : nextDisplay === 50 ? 22 : nextDisplay;
-            } else if (horlogeMode === 'unordered') {
-                const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
-                const allCompleted = horlogeTargets.every(t => (currentPlayer.horlogeHits[t] || 0) >= multiplicity);
-                if (allCompleted) {
-                    saveState();
-                    alert(`🏆 ${currentPlayer.name} a gagné !`);
-                    renderHome();
-                    return;
-                }
             }
 
             saveState();
@@ -3131,6 +3257,8 @@
             player.horlogeHits[last.target] = last.oldHits;
             player.score = last.oldScore;
             player.currentTarget = last.oldCurrentTarget;
+            player.horlogeLastTargetDisplay = last.oldLastTargetDisplay;
+            player.horlogeLastSequence = last.oldLastSequence;
             appState.currentPlayerIndex = last.playerIndex;
 
             saveState();
@@ -3143,7 +3271,7 @@
 
         function openDartsPickerHorloge() {
             const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
-            const multiplicity = appState.horlogeMultiplicity || 1;
+            const multiplicity = appState.horlogeMultiplicity || 3;
             const currentPlayer = appState.players[appState.currentPlayerIndex];
             
             // Initialiser ou charger les compteurs de la session
@@ -3168,7 +3296,6 @@
                 <div class="darts-picker-modal active" id="horloge-picker-modal" onclick="closeHorlogePicker(event)">
                     <div class="darts-picker-content" style="max-width: 90vw; padding: 12px;" onclick="event.stopPropagation()">
                         <h2 style="text-align: center; margin: 0 0 8px; font-size: 1.1rem;">${currentPlayer.name}</h2>
-                        <p style="text-align: center; margin: 0 0 12px; font-size: 0.9rem; color: var(--muted);">Multiplicity: ${multiplicity}x</p>
                         <div class="horloge-grid">
                             ${buttonsGrid}
                         </div>
@@ -3189,7 +3316,7 @@
 
         function addHorlogeHit(target) {
             const currentPlayer = appState.players[appState.currentPlayerIndex];
-            const multiplicity = appState.horlogeMultiplicity || 1;
+            const multiplicity = appState.horlogeMultiplicity || 3;
             
             if (!horlogeSessionHits[currentPlayer.id]) {
                 horlogeSessionHits[currentPlayer.id] = {};
@@ -3221,7 +3348,7 @@
 
         function confirmHorlogeTurn() {
             const currentPlayer = appState.players[appState.currentPlayerIndex];
-            const multiplicity = appState.horlogeMultiplicity || 1;
+            const multiplicity = appState.horlogeMultiplicity || 3;
             const horlogeTargets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 50];
             
             // Appliquer les hits au joueur
@@ -3241,6 +3368,8 @@
             // Vérifier si le joueur a complété la cible actuelle
             const currentTarget = currentPlayer.currentTarget;
             const currentHits = currentPlayer.horlogeHits[currentTarget] || 0;
+            currentPlayer.horlogeLastTargetDisplay = currentTarget === 21 ? 25 : currentTarget === 22 ? 50 : currentTarget;
+            currentPlayer.horlogeLastSequence = multiplicity === 1 ? '-' : getHorlogeSequence(currentHits);
             
             if (currentHits >= multiplicity) {
                 let nextTarget = currentTarget + 1;
@@ -3261,6 +3390,13 @@
             delete horlogeSessionHits[currentPlayer.id]; // Réinitialiser pour le prochain tour
             closeHorlogePicker();
             nextDartsHorlogePlayer();
+        }
+
+        function getHorlogeSequence(hits) {
+            if (!hits || hits <= 0) return '-';
+            if (hits === 1) return '/';
+            if (hits === 2) return 'X';
+            return 'O';
         }
 
         function closeHorlogePicker(event) {
@@ -3800,8 +3936,10 @@
             const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
             const summaryMarkup = appState.players.map((player, index) => `
                 <div class="game-summary-card ${index === appState.currentPlayerIndex ? 'current' : ''}">
-                    <div class="game-summary-name">${player.name}</div>
-                    <div class="game-summary-score">${Math.round(player.score * 10) / 10}</div>
+                    <div class="game-summary-top">
+                        <div class="game-summary-name">${player.name}</div>
+                        <div class="game-summary-score">${Math.round(player.score * 10) / 10}</div>
+                    </div>
                     <small>Dernier: ${player.lastCombo || '-'}</small>
                 </div>
             `).join('');
@@ -3811,21 +3949,22 @@
             document.getElementById('app').innerHTML = `
                 <div class="game-header">
                     <h1>🎲 421</h1>
-                    <div class="game-header-turn">Manche ${appState.game421Round}/${GAME421_TOTAL_ROUNDS} · Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
+                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
+                    <div class="subtitle">Manche ${appState.game421Round}/${GAME421_TOTAL_ROUNDS}</div>
                 </div>
 
                 <div class="card">
                     <div class="dice-toolbar">
-                        <button class="zinch-action-btn btn-arrow-up" onclick="record421Roll()">Valider lancer</button>
                         <button class="zinch-action-btn btn-plus" onclick="finalize421Turn()">Garder</button>
-                        <button class="zinch-action-btn horloge-menu-btn" onclick="renderHome()">⌂</button>
                     </div>
                     <div class="dice-grid dice-grid-3">
-                        ${(appState.game421Dice || [1, 1, 1]).map((value, index) => `<button class="die-btn" onclick="set421DieValue(${index})">${value}</button>`).join('')}
+                        ${(appState.game421Dice || [1, 1, 1]).map((value, index) => {
+                            return `<button class="die-btn" onclick="set421DieValue(${index})">${value}</button>`;
+                        }).join('')}
                     </div>
                     <div class="dice-status">
-                        <span>Lancers restants: ${appState.game421RollsLeft}</span>
                         <span>Combinaison: ${combo.label}</span>
+                        <span>Points: ${combo.points}</span>
                     </div>
                 </div>
 
@@ -3978,20 +4117,18 @@
             document.getElementById('app').innerHTML = `
                 <div class="game-header">
                     <h1>🎲 Yams</h1>
-                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span> · ${appState.yamsRollsLeft} lancer(s)</div>
+                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
                 </div>
 
                 <div class="card">
                     <div class="dice-toolbar">
-                        <button class="zinch-action-btn btn-arrow-up" onclick="recordYamsRoll()">Valider lancer</button>
                         <button class="zinch-action-btn btn-minus" onclick="resetYamsDice()">Reset dés</button>
-                        <button class="zinch-action-btn horloge-menu-btn" onclick="renderHome()">⌂</button>
                     </div>
                     <div class="dice-grid">
                         ${diceValues.map((value, index) => `<button class="die-btn" onclick="setYamsDieValue(${index})">${value}</button>`).join('')}
                     </div>
                     <div class="dice-status">
-                        <span>Saisis les dés réels puis valide le lancer</span>
+                        <span>Saisis directement le résultat des dés</span>
                         <span>Bonus haut: ${currentPlayer?.yamsBonus || 0}</span>
                     </div>
                 </div>
@@ -4019,13 +4156,6 @@
             `;
         }
 
-        function recordYamsRoll() {
-            if (appState.yamsRollsLeft <= 0) return;
-            appState.yamsRollsLeft -= 1;
-            saveState();
-            renderYamsBoard();
-        }
-
         function setYamsDieValue(index) {
             const dice = Array.isArray(appState.yamsDice) ? [...appState.yamsDice] : [1, 1, 1, 1, 1];
             const current = Number(dice[index]) || 1;
@@ -4046,11 +4176,6 @@
             if (!currentPlayer) return;
             if (!currentPlayer.yamsScores) currentPlayer.yamsScores = {};
             if (Object.prototype.hasOwnProperty.call(currentPlayer.yamsScores, categoryKey)) return;
-
-            if (appState.yamsRollsLeft === 3) {
-                alert('Lance au moins une fois les dés avant de valider une case.');
-                return;
-            }
 
             const categoryLabel = YAMS_CATEGORIES.find(c => c.key === categoryKey)?.label || categoryKey;
             const inputValue = prompt(`Combien de points pour "${categoryLabel}" ?\n(Suggestion: ${suggested}, tu peux mettre 0 ou autre chose)`, suggested);
