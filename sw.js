@@ -1,8 +1,9 @@
-const CACHE_NAME = 'compteur-v2';
+const CACHE_NAME = 'compteur-v3';
 const ASSETS = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './icon.svg'
 ];
 
 self.addEventListener('install', (e) => {
