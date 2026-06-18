@@ -454,13 +454,59 @@
         }
 
         #player-count-form .setup-name-input {
-            padding: 9px 11px;
-            font-size: 0.95rem;
-            min-height: 38px;
+            padding: 13px 15px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            min-height: 52px;
         }
 
         #player-count-form label {
             font-size: 0.95rem;
+        }
+
+        .count-stepper {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .count-stepper-btn {
+            flex: 0 0 auto;
+            width: 72px;
+            min-height: 64px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface-soft);
+            color: var(--text);
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .count-stepper-btn:hover { background: var(--border); }
+        .count-stepper-btn:active { transform: scale(0.94); }
+
+        .count-stepper input[type="number"] {
+            flex: 1 1 auto;
+            width: 100%;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            -moz-appearance: textfield;
+            appearance: textfield;
+            pointer-events: none;
+        }
+
+        .count-stepper input[type="number"]::-webkit-outer-spin-button,
+        .count-stepper input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         label { font-weight: 600; }
@@ -551,6 +597,16 @@
             gap: 6px;
         }
 
+        .zinch-last-lines.single-line {
+            flex-wrap: nowrap;
+            overflow: hidden;
+            justify-content: flex-end;
+        }
+
+        .zinch-last-lines.single-line .zinch-line {
+            flex: 0 0 auto;
+        }
+
         .zinch-line.high-score {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -578,6 +634,26 @@
             color: white;
             border-color: rgba(216, 58, 58, 0.7);
             font-weight: 800;
+        }
+
+        .zinch-sticky-top {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 6px;
+            padding-bottom: 8px;
+        }
+
+        .zinch-title-card {
+            text-align: center;
+            padding: 10px 16px;
+        }
+
+        .zinch-title-card .game-header {
+            margin: 0;
         }
 
         .zinch-controls {
@@ -834,6 +910,17 @@
             box-shadow: 0 0 0 4px rgba(91, 124, 255, 0.2);
         }
 
+        .horloge-turn-label {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .horloge-turn-label .current-player-name {
+            color: var(--primary);
+        }
+
         .horloge-score-pill {
             min-width: 74px;
         }
@@ -841,6 +928,29 @@
         .horloge-player-row.current-player .horloge-score-pill {
             border-color: var(--primary);
             cursor: pointer;
+        }
+
+        .horloge-player-row.current-player .horloge-score-pill,
+        .horloge-players-list.all-large .horloge-score-pill {
+            min-width: 120px;
+            min-height: 64px;
+            padding: 10px 16px;
+        }
+
+        .horloge-player-row.current-player .horloge-score-pill .cricket-target-num,
+        .horloge-players-list.all-large .horloge-score-pill .cricket-target-num {
+            font-size: 1.8rem;
+        }
+
+        .horloge-player-row.current-player .horloge-score-pill .cricket-target-icon,
+        .horloge-players-list.all-large .horloge-score-pill .cricket-target-icon {
+            font-size: 1.2rem;
+        }
+
+        .horloge-player-row.current-player .horloge-player-name,
+        .horloge-players-list.all-large .horloge-player-name {
+            font-size: 1.55rem;
+            font-weight: 900;
         }
 
         .horloge-player-row.current-player .horloge-score-pill:hover {
@@ -1038,6 +1148,12 @@
             background: linear-gradient(135deg, #60a5fa, #2563eb);
             color: white;
             font-weight: 700;
+        }
+
+        .darts501-controls .cricket-undo-btn {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+            color: white;
+            box-shadow: 0 8px 16px rgba(107, 114, 128, 0.2);
         }
 
         .horloge-target-num {
@@ -2365,23 +2481,94 @@
             box-shadow: 0 0 0 2px rgba(31, 91, 216, 0.18);
         }
 
-        .yams-place-btn {
+        .yams-cell-btn {
             width: 100%;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 4px 6px;
+            padding: 6px 6px;
+            min-height: 40px;
             font-weight: 900;
+            font-size: 1.05rem;
             background: linear-gradient(145deg, var(--surface-soft), var(--surface));
-            color: var(--primary);
-        }
-
-        .yams-fixed-score {
             color: var(--text);
-            opacity: 0.9;
         }
 
-        .yams-empty {
-            opacity: 0.35;
+        /* case réussie / saisie : valeur bien visible */
+        .yams-cell-btn.filled {
+            color: #0f5132;
+            background: linear-gradient(145deg, #e7f7ef, #d7f0e3);
+            border-color: #9ad9bd;
+        }
+
+        /* combinaison non encore jouée : valeur potentielle grisée */
+        .yams-cell-btn.ghost {
+            color: var(--muted);
+            opacity: 0.55;
+            font-weight: 700;
+        }
+
+        /* case barrée (0) */
+        .yams-cell-btn.barre,
+        .yams-cell.barre {
+            color: var(--danger);
+            background: repeating-linear-gradient(135deg, rgba(216,58,58,0.08), rgba(216,58,58,0.08) 6px, transparent 6px, transparent 12px);
+        }
+
+        .yams-input-content {
+            text-align: center;
+            min-width: 240px;
+        }
+
+        .yams-input-title {
+            margin: 0 0 4px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            font-size: 1.3rem;
+        }
+
+        .yams-input-hint {
+            margin: 0 0 14px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .yams-input-field {
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface-soft);
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .yams-input-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .yams-cell {
+            font-weight: 800;
+        }
+
+        .yams-cell.filled { color: #0f5132; }
+        .yams-cell.ghost { opacity: 0.3; }
+        .yams-cell.total { color: var(--primary-dark); }
+
+        /* totaux & séparateurs de sections */
+        .yams-row-total td {
+            background: linear-gradient(145deg, #eef3ff, #f8faff);
+            font-weight: 900;
+        }
+
+        .yams-row-sep td {
+            border-top: 3px solid rgba(31, 91, 216, 0.35);
         }
 
         /* Sand background color harmonization (non-button UI only) */
@@ -2469,6 +2656,82 @@
             background: rgba(255, 241, 238, 0.96);
             border-color: rgba(238, 163, 152, 0.9);
         }
+
+        /* ============================================================
+           Relooking « esprit actuel » — raffinement (couche finale)
+           Fond sablé + cartes claires conservés, plus de relief & netteté
+           ============================================================ */
+
+        /* Cartes : verre clair avec léger dégradé, ombre en couches
+           et fin liseré lumineux en haut pour le relief */
+        .card {
+            background:
+                linear-gradient(180deg,
+                    color-mix(in srgb, var(--surface) 94%, white 6%),
+                    color-mix(in srgb, var(--surface) 82%, var(--surface-soft) 18%));
+            border-color: color-mix(in srgb, var(--border) 68%, white 32%);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.75) inset,
+                0 2px 6px rgba(17, 24, 39, 0.05),
+                0 20px 42px rgba(17, 24, 39, 0.14);
+        }
+
+        /* Boutons de jeu (accueil) : plus tactiles, survol vivant */
+        .game-button {
+            background: linear-gradient(180deg, #ffffff, var(--surface-soft));
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.85) inset,
+                0 8px 18px rgba(15, 23, 42, 0.08);
+        }
+
+        .game-button:hover {
+            transform: translateY(-2px);
+            border-color: color-mix(in srgb, var(--primary) 34%, var(--border));
+            box-shadow: 0 16px 30px rgba(31, 91, 216, 0.18);
+        }
+
+        .game-button strong { letter-spacing: -0.01em; }
+
+        .game-button.primary {
+            background: linear-gradient(145deg,
+                color-mix(in srgb, var(--primary) 92%, white 8%), var(--primary-dark));
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.28) inset,
+                0 14px 26px rgba(31, 91, 216, 0.34);
+        }
+
+        .game-button.primary:hover {
+            box-shadow: 0 18px 32px rgba(31, 91, 216, 0.42);
+        }
+
+        /* Titres & bandeaux : « verre sablé » plus net et homogène */
+        h1,
+        h1 + .subtitle,
+        .game-header {
+            background: linear-gradient(150deg,
+                rgba(255, 251, 243, 0.95), rgba(244, 230, 203, 0.87));
+            border-color: rgba(120, 99, 67, 0.28);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.6) inset,
+                0 8px 20px rgba(17, 24, 39, 0.12);
+        }
+
+        h1 { letter-spacing: -0.02em; }
+
+        /* Chiffres de score : léger relief pour ressortir sur les cartes */
+        .zinch-total,
+        .score-display {
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Champs de saisie : profondeur douce (effet « enfoncé ») */
+        .player-name-input,
+        .score-input,
+        .zinch-input,
+        input[type="number"],
+        .setup-name-input {
+            box-shadow: 0 1px 2px rgba(17, 24, 39, 0.05) inset;
+        }
     </style>
 </head>
 <body>
@@ -2482,20 +2745,24 @@
         const DEFAULT_ZINCH_VALUE = 250;
         const GAME421_TOTAL_ROUNDS = 8;
         const YAMS_CATEGORIES = [
-            { key: 'ones', label: 'As' },
-            { key: 'twos', label: 'Deux' },
-            { key: 'threes', label: 'Trois' },
-            { key: 'fours', label: 'Quatre' },
-            { key: 'fives', label: 'Cinq' },
-            { key: 'sixes', label: 'Six' },
-            { key: 'threeKind', label: 'Brelan' },
-            { key: 'fourKind', label: 'Carré' },
-            { key: 'fullHouse', label: 'Full' },
-            { key: 'smallStraight', label: 'Petite suite' },
-            { key: 'largeStraight', label: 'Grande suite' },
-            { key: 'yams', label: 'Yams' },
-            { key: 'chance', label: 'Chance' }
+            { key: 'ones', label: '1', type: 'number', face: 1 },
+            { key: 'twos', label: '2', type: 'number', face: 2 },
+            { key: 'threes', label: '3', type: 'number', face: 3 },
+            { key: 'fours', label: '4', type: 'number', face: 4 },
+            { key: 'fives', label: '5', type: 'number', face: 5 },
+            { key: 'sixes', label: '6', type: 'number', face: 6 },
+            { key: 'plus', label: '+', type: 'input' },
+            { key: 'minus', label: '−', type: 'input' },
+            { key: 'chance', label: 'Chance', type: 'input' },
+            { key: 'threeKind', label: 'Brelan', type: 'combo', value: 30 },
+            { key: 'fourKind', label: 'Carré', type: 'combo', value: 40 },
+            { key: 'fullHouse', label: 'Full', type: 'combo', value: 30 },
+            { key: 'smallStraight', label: 'Petite suite', type: 'combo', value: 30 },
+            { key: 'largeStraight', label: 'Grande suite', type: 'combo', value: 40 },
+            { key: 'yams', label: 'Yams', type: 'combo', value: 50 }
         ];
+        const YAMS_INPUT_MIN = 5;
+        const YAMS_INPUT_MAX = 36;
         const DEFAULT_STATE = {
             screen: 'home',
             game: null,
@@ -2511,13 +2778,11 @@
             horlogeMultiplicity: 3,
             horlogeMode: 'ordered',
             horlogeUndoStack: [],
+            darts501UndoStack: [],
             game421Round: 1,
             game421Dice: [1, 1, 1],
             game421Held: [false, false, false],
-            game421RollsLeft: 3,
-            yamsDice: [1, 1, 1, 1, 1],
-            yamsHeld: [false, false, false, false, false],
-            yamsRollsLeft: 3
+            game421RollsLeft: 3
         };
 
         let appState = loadState();
@@ -2540,6 +2805,7 @@
                     })),
                     undoStack: Array.isArray(saved.undoStack) ? saved.undoStack : [],
                     horlogeUndoStack: Array.isArray(saved.horlogeUndoStack) ? saved.horlogeUndoStack : [],
+                    darts501UndoStack: Array.isArray(saved.darts501UndoStack) ? saved.darts501UndoStack : [],
                     nextZinchValue: typeof saved.nextZinchValue === 'number' ? saved.nextZinchValue : DEFAULT_ZINCH_VALUE,
                     winnerId: typeof saved.winnerId === 'number' ? saved.winnerId : null,
                     gameFinished: typeof saved.gameFinished === 'boolean' ? saved.gameFinished : false
@@ -2554,7 +2820,8 @@
                 ...appState,
                 // Undo stacks are session-only and can become very large.
                 undoStack: [],
-                horlogeUndoStack: []
+                horlogeUndoStack: [],
+                darts501UndoStack: []
             };
         }
 
@@ -2709,7 +2976,7 @@
             appState.screen = 'player-count';
             appState.game = '421';
             saveState();
-            const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+            const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 2;
             const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
                 const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
                 return `
@@ -2728,12 +2995,7 @@
 
                 <div class="card">
                     <form id="game421-setup-form" onsubmit="return handle421PlayerCountSubmit(event)">
-                        <div class="field-row">
-                            <div class="field">
-                                <label for="playerCount">Nombre de joueurs</label>
-                                <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
-                            </div>
-                        </div>
+                        ${playerCountStepperMarkup(count)}
                         <div id="player-name-fields">${nameInputsMarkup}</div>
                         <div class="actions" style="margin-top: 14px;">
                             <button class="btn-reset" type="submit">Commencer</button>
@@ -2784,7 +3046,7 @@
             
             if (variant === '501') {
                 // Affiche une page spéciale pour le 501 avec la checkbox
-                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 2;
                 const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
                     const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
                     return `
@@ -2803,12 +3065,7 @@
 
                     <div class="card">
                         <form id="darts-setup-form" onsubmit="return handleDartsSetupSubmit(event)">
-                            <div class="field-row">
-                                <div class="field">
-                                    <label for="playerCount">Nombre de joueurs</label>
-                                    <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
-                                </div>
-                            </div>
+                            ${playerCountStepperMarkup(count)}
                             <div id="player-name-fields">${nameInputsMarkup}</div>
 
                             <div style="margin-top: 16px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
@@ -2828,7 +3085,7 @@
                 saveState();
             } else if (variant === 'horloge') {
                 // Affiche une page spéciale pour l'horloge avec l'option 1x/3x
-                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+                const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 2;
                 const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
                     const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
                     return `
@@ -2847,12 +3104,7 @@
 
                     <div class="card">
                         <form id="darts-horloge-form" onsubmit="return handleDartsHorlogeSetupSubmit(event)">
-                            <div class="field-row">
-                                <div class="field">
-                                    <label for="playerCount">Nombre de joueurs</label>
-                                    <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
-                                </div>
-                            </div>
+                            ${playerCountStepperMarkup(count)}
                             <div id="player-name-fields">${nameInputsMarkup}</div>
 
                             <div style="margin-top: 12px; padding: 12px; background: var(--surface-soft); border-radius: 10px;">
@@ -2937,7 +3189,8 @@
             appState.currentPlayerIndex = 0;
             appState.dartsVariant = variant;
             appState.horlogeUndoStack = [];
-            
+            appState.darts501UndoStack = [];
+
             if (variant === '501') {
                 appState.players = Array.from({ length: playerCount }, (_, index) => ({
                     id: index + 1,
@@ -3037,6 +3290,7 @@
                     <div class="zinch-controls cricket-controls darts501-controls">
                         <button class="zinch-action-btn cricket-next-btn" onclick="nextDarts501Player()">→</button>
                         <button class="zinch-action-btn cricket-next-btn darts501-dart-btn" onclick="openDartsPicker('501')">Dart</button>
+                        <button class="zinch-action-btn cricket-undo-btn" onclick="undoLastDarts501Action()">←</button>
                     </div>
                 </div>
                 
@@ -3070,13 +3324,14 @@
 
             return `
                 <div class="card">
+                    <div class="horloge-turn-label">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
                     <div class="zinch-controls horloge-controls">
                         <button class="zinch-action-btn cricket-next-btn" onclick="nextDartsHorlogePlayer()">→</button>
                         <button class="zinch-action-btn cricket-undo-btn" onclick="undoLastHorlogeAction()">←</button>
                     </div>
                 </div>
 
-                <div class="horloge-players-list">
+                <div class="horloge-players-list ${appState.players.length <= 3 ? 'all-large' : ''}">
                     ${rowsMarkup}
                 </div>
             `;
@@ -3185,6 +3440,22 @@
 
         function nextDarts501Player() {
             appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
+            saveState();
+            renderDartsBoard();
+        }
+
+        function undoLastDarts501Action() {
+            if (!Array.isArray(appState.darts501UndoStack) || appState.darts501UndoStack.length === 0) {
+                return;
+            }
+
+            const last = appState.darts501UndoStack.pop();
+            const player = appState.players[last.playerIndex];
+            if (player) {
+                player.score = last.oldScore;
+                appState.currentPlayerIndex = last.playerIndex;
+            }
+
             saveState();
             renderDartsBoard();
         }
@@ -3494,17 +3765,19 @@
         function validateDartsVolley(variant) {
             if (variant === '501') {
                 const currentPlayer = appState.players[appState.currentPlayerIndex];
+                const playedIndex = appState.currentPlayerIndex;
+                const oldScore = currentPlayer.score;
                 const scoreVolley = dartsCurrentVolee.reduce((a, b) => a + b, 0);
                 const newScore = currentPlayer.score - scoreVolley;
-                
+
                 // Vérifier le double out
                 if (appState.dartsDoubleOut && newScore === 1) {
                     alert('❌ Impossible de finir à 1 avec un double ! (Double Out)');
                     return;
                 }
-                
+
                 currentPlayer.score = newScore;
-                
+
                 if (currentPlayer.score < 0) {
                     currentPlayer.score += scoreVolley;
                     alert('❌ Vous avez cassé ! (dépassement)');
@@ -3513,7 +3786,14 @@
                     renderHome();
                     return;
                 }
-                
+
+                // Sauvegarder l'action pour annulation
+                if (!Array.isArray(appState.darts501UndoStack)) appState.darts501UndoStack = [];
+                appState.darts501UndoStack.push({ playerIndex: playedIndex, oldScore });
+                if (appState.darts501UndoStack.length > 100) {
+                    appState.darts501UndoStack.shift();
+                }
+
                 saveState();
                 appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
                 saveState();
@@ -3613,7 +3893,7 @@
         }
 
         function renderPlayerSetupScreen(title, subtitle, submitHandlerName) {
-            const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 3;
+            const count = appState.playerCount && appState.playerCount > 0 ? appState.playerCount : 2;
             const nameInputsMarkup = Array.from({ length: count }, (_, index) => {
                 const defaultValue = index === 0 ? 'Rachel' : index === 1 ? 'Alexis' : `Joueur ${index + 1}`;
                 return `
@@ -3632,12 +3912,7 @@
 
                 <div class="card">
                     <form id="player-count-form" onsubmit="return ${submitHandlerName}(event)">
-                        <div class="field-row">
-                            <div class="field">
-                                <label for="playerCount">Nombre de joueurs</label>
-                                <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" required oninput="refreshPlayerNameFields(this.value)">
-                            </div>
-                        </div>
+                        ${playerCountStepperMarkup(count)}
                         <div id="player-name-fields">${nameInputsMarkup}</div>
                         <div class="actions" style="margin-top: 14px;">
                             <button class="btn-reset" type="submit">Commencer</button>
@@ -3646,6 +3921,31 @@
                     </form>
                 </div>
             `;
+        }
+
+        function playerCountStepperMarkup(count) {
+            return `
+                <div class="field-row">
+                    <div class="field">
+                        <label for="playerCount">Nombre de joueurs</label>
+                        <div class="count-stepper">
+                            <button type="button" class="count-stepper-btn" aria-label="Moins de joueurs" onclick="changePlayerCount(-1)">−</button>
+                            <input id="playerCount" name="playerCount" type="number" min="1" max="${MAX_PLAYERS}" value="${count}" readonly tabindex="-1">
+                            <button type="button" class="count-stepper-btn" aria-label="Plus de joueurs" onclick="changePlayerCount(1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function changePlayerCount(delta) {
+            const input = document.getElementById('playerCount');
+            if (!input) return;
+            let count = parseInt(input.value, 10);
+            if (Number.isNaN(count)) count = 2;
+            count = Math.min(MAX_PLAYERS, Math.max(1, count + delta));
+            input.value = count;
+            refreshPlayerNameFields(count);
         }
 
         function refreshPlayerNameFields(value) {
@@ -3793,16 +4093,14 @@
             appState.game = 'yams';
             appState.playerCount = playerCount;
             appState.currentPlayerIndex = 0;
-            appState.yamsRollsLeft = 3;
-            appState.yamsDice = [1, 1, 1, 1, 1];
-            appState.yamsHeld = [false, false, false, false, false];
             appState.players = Array.from({ length: playerCount }, (_, index) => ({
                 id: index + 1,
                 name: playerNames[index] || `Joueur ${index + 1}`,
                 score: 0,
-                yamsScores: {},
+                yamsCells: {},
                 yamsUpperTotal: 0,
-                yamsBonus: 0
+                yamsBonus: 0,
+                yamsPlusMinus: 0
             }));
             saveState();
             renderYamsBoard();
@@ -3852,10 +4150,13 @@
             const defaultZinchValue = getDefaultZinchTurnValue();
             appState.nextZinchValue = defaultZinchValue;
             const winnerPlayer = appState.players.find(player => player.id === appState.winnerId);
+            const singleLineScores = appState.players.length > 2;
             const playersMarkup = appState.players.map(player => {
                 const isCurrent = player.id === currentPlayer?.id;
-                const historyEntries = player.entries.length > 120
-                    ? player.entries.slice(-120)
+                // Avec plus de 2 joueurs : une seule ligne, on garde seulement les tours les plus récents.
+                const maxEntries = singleLineScores ? 8 : 120;
+                const historyEntries = player.entries.length > maxEntries
+                    ? player.entries.slice(-maxEntries)
                     : [...player.entries];
                 const zinchStreak = getConsecutiveZinchCount(player);
                 const isRed = zinchStreak === 2;
@@ -3869,29 +4170,33 @@
                             <input class="player-name-input" type="text" value="${player.name}" placeholder="Joueur" oninput="updatePlayerName(${player.id}, this.value)" autocomplete="off">
                             <div class="zinch-total">${player.score}</div>
                         </div>
-                        <div class="zinch-last-lines">${linesMarkup}</div>
+                        <div class="zinch-last-lines ${singleLineScores ? 'single-line' : ''}">${linesMarkup}</div>
                     </div>
                 `;
             }).join('');
 
             document.getElementById('app').innerHTML = `
-                <div class="game-header">
-                    <h1>🎲 Zinch</h1>
-                    <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
-                </div>
-                ${winnerPlayer ? `<div class="zinch-winner">🏆 Gagnant : ${winnerPlayer.name}</div>` : ''}
-                ${appState.gameFinished ? `<div class="zinch-winner zinch-winner-finished">Partie terminée après un Zinch.</div>` : ''}
-
-                <div class="card">
-                    <div class="zinch-controls">
-                        <input id="zinch-score-input" class="zinch-input" type="number" min="50" max="10000" step="50" value="${defaultZinchValue}" placeholder="${defaultZinchValue}" onfocus="selectInputText(this)">
-                        <div class="zinch-arrow-stack">
-                            <button class="zinch-action-btn btn-arrow-up" onclick="addZinchPlus50()">⬆</button>
-                            <button class="zinch-action-btn btn-arrow-down" onclick="removeZinchMinus50()">⬇</button>
+                <div class="zinch-sticky-top">
+                    <div class="card zinch-title-card">
+                        <div class="game-header">
+                            <h1>🎲 Zinch</h1>
+                            <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
                         </div>
-                        <button class="zinch-action-btn btn-plus zinch-plus-tall" onclick="addZinchScore()">+</button>
-                        <button class="zinch-action-btn btn-minus" onclick="addZinchZ()">Z</button>
-                        <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastAction()">←</button>
+                        ${winnerPlayer ? `<div class="zinch-winner">🏆 Gagnant : ${winnerPlayer.name}</div>` : ''}
+                        ${appState.gameFinished ? `<div class="zinch-winner zinch-winner-finished">Partie terminée après un Zinch.</div>` : ''}
+                    </div>
+
+                    <div class="card zinch-controls-card">
+                        <div class="zinch-controls">
+                            <input id="zinch-score-input" class="zinch-input" type="number" min="50" max="10000" step="50" value="${defaultZinchValue}" placeholder="${defaultZinchValue}" onfocus="selectInputText(this)">
+                            <div class="zinch-arrow-stack">
+                                <button class="zinch-action-btn btn-arrow-up" onclick="addZinchPlus50()">⬆</button>
+                                <button class="zinch-action-btn btn-arrow-down" onclick="removeZinchMinus50()">⬇</button>
+                            </div>
+                            <button class="zinch-action-btn btn-plus zinch-plus-tall" onclick="addZinchScore()">+</button>
+                            <button class="zinch-action-btn btn-minus" onclick="addZinchZ()">Z</button>
+                            <button class="zinch-action-btn z-inch-undo-btn" onclick="undoLastAction()">←</button>
+                        </div>
                     </div>
                 </div>
 
@@ -4024,54 +4329,82 @@
             render421Board();
         }
 
-        function getYamsCategoryScore(diceValues, categoryKey) {
-            const counts = Array(7).fill(0);
-            diceValues.forEach(value => {
-                counts[value] += 1;
-            });
-            const sum = diceValues.reduce((acc, value) => acc + value, 0);
-            const uniqueSorted = [...new Set(diceValues)].sort((a, b) => a - b);
+        function getYamsCategory(key) {
+            return YAMS_CATEGORIES.find(c => c.key === key);
+        }
 
-            const hasSequence = (length) => {
-                let streak = 1;
-                for (let i = 1; i < uniqueSorted.length; i++) {
-                    if (uniqueSorted[i] === uniqueSorted[i - 1] + 1) {
-                        streak += 1;
-                        if (streak >= length) return true;
-                    } else {
-                        streak = 1;
-                    }
-                }
-                return false;
-            };
-
-            if (categoryKey === 'ones') return counts[1] * 1;
-            if (categoryKey === 'twos') return counts[2] * 2;
-            if (categoryKey === 'threes') return counts[3] * 3;
-            if (categoryKey === 'fours') return counts[4] * 4;
-            if (categoryKey === 'fives') return counts[5] * 5;
-            if (categoryKey === 'sixes') return counts[6] * 6;
-            if (categoryKey === 'threeKind') return counts.some(count => count >= 3) ? sum : 0;
-            if (categoryKey === 'fourKind') return counts.some(count => count >= 4) ? sum : 0;
-            if (categoryKey === 'fullHouse') return (counts.includes(3) && counts.includes(2)) ? 25 : 0;
-            if (categoryKey === 'smallStraight') return hasSequence(4) ? 30 : 0;
-            if (categoryKey === 'largeStraight') return hasSequence(5) ? 40 : 0;
-            if (categoryKey === 'yams') return counts.some(count => count === 5) ? 50 : 0;
-            if (categoryKey === 'chance') return sum;
-            return 0;
+        // Points rapportés par une case selon son état stocké.
+        // number  : compte de dés 1..5 (× valeur du chiffre), 'X' = barré (0)
+        // combo   : 'V' = réussie (valeur fixe), 'X' = barrée (0)
+        // input   : nombre saisi (+ / − / chance)
+        function getYamsCellPoints(category, state) {
+            if (state === undefined || state === null) return 0;
+            if (category.type === 'number') {
+                return state === 'X' ? 0 : state * category.face;
+            }
+            if (category.type === 'combo') {
+                return state === 'V' ? category.value : 0;
+            }
+            return Number(state) || 0;
         }
 
         function countCompletedYamsCategories(player) {
-            return Object.keys(player.yamsScores || {}).length;
+            const cells = player.yamsCells || {};
+            return YAMS_CATEGORIES.filter(c => Object.prototype.hasOwnProperty.call(cells, c.key)).length;
         }
 
         function recalcYamsTotals(player) {
-            const scores = player.yamsScores || {};
+            const cells = player.yamsCells || {};
             const upperKeys = ['ones', 'twos', 'threes', 'fours', 'fives', 'sixes'];
-            player.yamsUpperTotal = upperKeys.reduce((sum, key) => sum + (scores[key] || 0), 0);
+            player.yamsUpperTotal = upperKeys.reduce((sum, key) => sum + getYamsCellPoints(getYamsCategory(key), cells[key]), 0);
             player.yamsBonus = player.yamsUpperTotal >= 63 ? 35 : 0;
-            const categoriesTotal = Object.values(scores).reduce((sum, value) => sum + value, 0);
-            player.score = categoriesTotal + player.yamsBonus;
+
+            // Section + / − : (Plus − Moins) × nombre de 1 (case "1")
+            const onesState = cells['ones'];
+            const onesCount = (onesState === undefined || onesState === 'X') ? 0 : onesState;
+            let plusMinus = 0;
+            if (cells['plus'] !== undefined && cells['minus'] !== undefined) {
+                plusMinus = (Number(cells['plus']) - Number(cells['minus'])) * onesCount;
+            }
+            player.yamsPlusMinus = plusMinus;
+
+            const comboKeys = ['threeKind', 'fourKind', 'fullHouse', 'smallStraight', 'largeStraight', 'yams'];
+            const combosTotal = comboKeys.reduce((sum, key) => sum + getYamsCellPoints(getYamsCategory(key), cells[key]), 0);
+
+            const chance = cells['chance'] !== undefined ? Number(cells['chance']) : 0;
+
+            player.score = player.yamsUpperTotal + player.yamsBonus + plusMinus + combosTotal + chance;
+        }
+
+        function renderYamsCell(player, category, isCurrent) {
+            const cells = player.yamsCells || {};
+            const has = Object.prototype.hasOwnProperty.call(cells, category.key);
+            const state = cells[category.key];
+
+            let display = '';
+            let cls = '';
+            if (category.type === 'number') {
+                if (state === 'X') { display = '✗'; cls = 'barre'; }
+                else if (has) { display = state * category.face; cls = 'filled'; }
+            } else if (category.type === 'combo') {
+                if (state === 'X') { display = '✗'; cls = 'barre'; }
+                else if (state === 'V') { display = category.value; cls = 'filled'; }
+                else if (isCurrent) { display = category.value; cls = 'ghost'; } // valeur potentielle (colonne active uniquement)
+            } else {
+                if (has) { display = state; cls = 'filled'; }
+            }
+
+            const shown = display === '' ? '—' : display;
+
+            if (isCurrent) {
+                const handler = category.type === 'input'
+                    ? `promptYamsInput('${category.key}')`
+                    : category.type === 'combo'
+                        ? `cycleYamsCombo('${category.key}')`
+                        : `cycleYamsNumber('${category.key}')`;
+                return `<td class="current"><button class="yams-cell-btn ${cls}" onclick="${handler}">${shown}</button></td>`;
+            }
+            return `<td><span class="yams-cell ${cls}">${shown}</span></td>`;
         }
 
         function renderYamsBoard() {
@@ -4079,14 +4412,12 @@
             saveState();
 
             const currentPlayer = appState.players[appState.currentPlayerIndex] || appState.players[0];
-            const diceValues = appState.yamsDice || [1, 1, 1, 1, 1];
-            const scores = currentPlayer?.yamsScores || {};
 
             const summaryMarkup = appState.players.map((player, index) => `
                 <div class="game-summary-card ${index === appState.currentPlayerIndex ? 'current' : ''}">
                     <div class="game-summary-name">${player.name}</div>
                     <div class="game-summary-score">${player.score || 0}</div>
-                    <small>${countCompletedYamsCategories(player)}/${YAMS_CATEGORIES.length} cases</small>
+                    <small>${countCompletedYamsCategories(player)}/${YAMS_CATEGORIES.length} · prime ${player.yamsBonus || 0}</small>
                 </div>
             `).join('');
 
@@ -4094,25 +4425,19 @@
                 <th class="${index === appState.currentPlayerIndex ? 'current' : ''}" title="${player.name}">${player.name}</th>
             `).join('');
 
-            const sheetRows = YAMS_CATEGORIES.map(category => {
-                const rowCells = appState.players.map((player, index) => {
-                    const playerScores = player.yamsScores || {};
-                    const hasValue = Object.prototype.hasOwnProperty.call(playerScores, category.key);
-
-                    if (hasValue) {
-                        return `<td class="${index === appState.currentPlayerIndex ? 'current' : ''}"><span class="yams-fixed-score">${playerScores[category.key]}</span></td>`;
-                    }
-
-                    if (index === appState.currentPlayerIndex) {
-                        const projected = getYamsCategoryScore(diceValues, category.key);
-                        return `<td class="current"><button class="yams-place-btn" onclick="promptYamsScore('${category.key}', ${projected})">${projected}</button></td>`;
-                    }
-
-                    return `<td><span class="yams-empty">-</span></td>`;
-                }).join('');
-
-                return `<tr><td>${category.label}</td>${rowCells}</tr>`;
+            const sheetRows = YAMS_CATEGORIES.map((category, catIndex) => {
+                const rowCells = appState.players
+                    .map((player, index) => renderYamsCell(player, category, index === appState.currentPlayerIndex))
+                    .join('');
+                // Séparateur visuel avant les + / − (après le 6) et avant le brelan
+                const sep = category.key === 'plus' || category.key === 'threeKind' ? ' yams-row-sep' : '';
+                return `<tr class="yams-row-${category.type}${sep}"><td>${category.label}</td>${rowCells}</tr>`;
             }).join('');
+
+            // Ligne total (1-6) + prime
+            const upperRow = appState.players.map((player, index) =>
+                `<td class="${index === appState.currentPlayerIndex ? 'current' : ''}"><span class="yams-cell total">${player.yamsUpperTotal || 0}${player.yamsBonus ? ' +' + player.yamsBonus : ''}</span></td>`
+            ).join('');
 
             document.getElementById('app').innerHTML = `
                 <div class="game-header">
@@ -4120,29 +4445,17 @@
                     <div class="game-header-turn">Tour de <span class="current-player-name">${currentPlayer ? currentPlayer.name : '...'}</span></div>
                 </div>
 
-                <div class="card">
-                    <div class="dice-toolbar">
-                        <button class="zinch-action-btn btn-minus" onclick="resetYamsDice()">Reset dés</button>
-                    </div>
-                    <div class="dice-grid">
-                        ${diceValues.map((value, index) => `<button class="die-btn" onclick="setYamsDieValue(${index})">${value}</button>`).join('')}
-                    </div>
-                    <div class="dice-status">
-                        <span>Saisis directement le résultat des dés</span>
-                        <span>Bonus haut: ${currentPlayer?.yamsBonus || 0}</span>
-                    </div>
-                </div>
-
                 <div class="card yams-sheet-wrap">
                     <table class="yams-sheet">
                         <thead>
                             <tr>
-                                <th>Catégorie</th>
+                                <th>Case</th>
                                 ${sheetHeader}
                             </tr>
                         </thead>
                         <tbody>
                             ${sheetRows}
+                            <tr class="yams-row-total"><td>Total ⬆ (prime ≥63)</td>${upperRow}</tr>
                         </tbody>
                     </table>
                 </div>
@@ -4150,47 +4463,125 @@
                 <div class="game-summary-grid">${summaryMarkup}</div>
 
                 <div class="actions" style="margin-top: 6px;">
+                    <button class="btn-reset" onclick="nextYamsPlayer()">Joueur suivant →</button>
                     <button class="btn-secondary" onclick="renderHome()">A quoi on joue ?</button>
-                    <button class="btn-reset" onclick="resetYamsGame()">Réinitialiser la partie</button>
+                    <button class="btn-secondary" onclick="resetYamsGame()">Réinitialiser la partie</button>
                 </div>
+
+                <div id="yams-input-container"></div>
             `;
         }
 
-        function setYamsDieValue(index) {
-            const dice = Array.isArray(appState.yamsDice) ? [...appState.yamsDice] : [1, 1, 1, 1, 1];
-            const current = Number(dice[index]) || 1;
-            dice[index] = current >= 6 ? 1 : current + 1;
-            appState.yamsDice = dice;
+        function cycleYamsNumber(key) {
+            const player = appState.players[appState.currentPlayerIndex];
+            if (!player) return;
+            if (!player.yamsCells) player.yamsCells = {};
+            const cur = player.yamsCells[key];
+            // vide → 1 → 2 → 3 → 4 → 5 → ✗ → vide
+            let next;
+            if (cur === undefined) next = 1;
+            else if (cur === 'X') next = undefined;
+            else if (cur >= 5) next = 'X';
+            else next = cur + 1;
+
+            if (next === undefined) delete player.yamsCells[key];
+            else player.yamsCells[key] = next;
+
+            recalcYamsTotals(player);
             saveState();
             renderYamsBoard();
         }
 
-        function resetYamsDice() {
-            appState.yamsDice = [1, 1, 1, 1, 1];
+        function cycleYamsCombo(key) {
+            const player = appState.players[appState.currentPlayerIndex];
+            if (!player) return;
+            if (!player.yamsCells) player.yamsCells = {};
+            const cur = player.yamsCells[key];
+            // vide → réussie (V) → barrée (X) → vide
+            let next;
+            if (cur === undefined) next = 'V';
+            else if (cur === 'V') next = 'X';
+            else next = undefined;
+
+            if (next === undefined) delete player.yamsCells[key];
+            else player.yamsCells[key] = next;
+
+            recalcYamsTotals(player);
             saveState();
             renderYamsBoard();
         }
 
-        function promptYamsScore(categoryKey, suggested) {
-            const currentPlayer = appState.players[appState.currentPlayerIndex];
-            if (!currentPlayer) return;
-            if (!currentPlayer.yamsScores) currentPlayer.yamsScores = {};
-            if (Object.prototype.hasOwnProperty.call(currentPlayer.yamsScores, categoryKey)) return;
+        function promptYamsInput(key) {
+            const player = appState.players[appState.currentPlayerIndex];
+            if (!player) return;
+            if (!player.yamsCells) player.yamsCells = {};
+            const category = getYamsCategory(key);
+            const cur = player.yamsCells[key];
+            const container = document.getElementById('yams-input-container');
+            if (!container) return;
 
-            const categoryLabel = YAMS_CATEGORIES.find(c => c.key === categoryKey)?.label || categoryKey;
-            const inputValue = prompt(`Combien de points pour "${categoryLabel}" ?\n(Suggestion: ${suggested}, tu peux mettre 0 ou autre chose)`, suggested);
+            container.innerHTML = `
+                <div class="darts-picker-modal active" id="yams-input-modal" onclick="closeYamsInput(event)">
+                    <div class="darts-picker-content yams-input-content" onclick="event.stopPropagation()">
+                        <h3 class="yams-input-title">${category.label} — points</h3>
+                        <p class="yams-input-hint">Entre une valeur de ${YAMS_INPUT_MIN} à ${YAMS_INPUT_MAX}</p>
+                        <input id="yams-input-field" class="yams-input-field" type="number" inputmode="numeric" min="${YAMS_INPUT_MIN}" max="${YAMS_INPUT_MAX}" value="${cur !== undefined ? cur : ''}" placeholder="${YAMS_INPUT_MIN}–${YAMS_INPUT_MAX}" onkeydown="if(event.key==='Enter'){event.preventDefault(); confirmYamsInput('${key}');}">
+                        <div class="yams-input-actions">
+                            <button class="btn-reset" onclick="confirmYamsInput('${key}')">Valider</button>
+                            <button class="btn-secondary" onclick="clearYamsInput('${key}')">Effacer</button>
+                            <button class="btn-secondary" onclick="closeYamsInput()">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-            if (inputValue === null) return;
+            const field = document.getElementById('yams-input-field');
+            if (field) { field.focus(); field.select(); }
+        }
 
-            const points = parseInt(inputValue, 10);
-            if (Number.isNaN(points) || points < 0) {
-                alert('Veuillez entrer un nombre valide (≥ 0).');
+        function confirmYamsInput(key) {
+            const player = appState.players[appState.currentPlayerIndex];
+            if (!player) return;
+            if (!player.yamsCells) player.yamsCells = {};
+            const field = document.getElementById('yams-input-field');
+            if (!field) return;
+
+            const trimmed = String(field.value).trim();
+            if (trimmed === '') {
+                clearYamsInput(key);
+                return;
+            }
+            const value = parseInt(trimmed, 10);
+            if (Number.isNaN(value) || value < YAMS_INPUT_MIN || value > YAMS_INPUT_MAX) {
+                alert(`Veuillez entrer un nombre entre ${YAMS_INPUT_MIN} et ${YAMS_INPUT_MAX}.`);
                 return;
             }
 
-            currentPlayer.yamsScores[categoryKey] = points;
-            recalcYamsTotals(currentPlayer);
+            player.yamsCells[key] = value;
+            recalcYamsTotals(player);
+            closeYamsInput();
+            saveState();
+            renderYamsBoard();
+        }
 
+        function clearYamsInput(key) {
+            const player = appState.players[appState.currentPlayerIndex];
+            if (player && player.yamsCells) {
+                delete player.yamsCells[key];
+                recalcYamsTotals(player);
+            }
+            closeYamsInput();
+            saveState();
+            renderYamsBoard();
+        }
+
+        function closeYamsInput(event) {
+            if (event && event.target && event.target.id !== 'yams-input-modal') return;
+            const container = document.getElementById('yams-input-container');
+            if (container) container.innerHTML = '';
+        }
+
+        function nextYamsPlayer() {
             const everyoneFinished = appState.players.every(player => countCompletedYamsCategories(player) >= YAMS_CATEGORIES.length);
             if (everyoneFinished) {
                 const winner = [...appState.players].sort((a, b) => (b.score || 0) - (a.score || 0))[0];
@@ -4201,9 +4592,6 @@
             }
 
             appState.currentPlayerIndex = (appState.currentPlayerIndex + 1) % appState.players.length;
-            appState.yamsDice = [1, 1, 1, 1, 1];
-            appState.yamsHeld = [false, false, false, false, false];
-            appState.yamsRollsLeft = 3;
             saveState();
             renderYamsBoard();
         }
